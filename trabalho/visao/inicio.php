@@ -5,8 +5,8 @@ include_once('cabecalho.php');
 
 ?>
 
-<body>  
-    
+<body>
+
     <div class="inicio-container">
         <div class="welcome-content text-center">
             <img src="https://www.senacrs.com.br/assets/layout/images/logo_senac.png" alt="Logo Senac" class="logo mb-4">
@@ -16,9 +16,37 @@ include_once('cabecalho.php');
         </div>
     </div>
 
+    <div id="carouselExample" class="carousel slide my-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../css/img_carrossel/1.jpg" class="d-block w-100" alt="Imagem 1">
+            </div>
+            <div class="carousel-item">
+                <img src="../css/img_carrossel/2.jpeg" class="d-block w-100" alt="Imagem 2">
+            </div>
+            <div class="carousel-item">
+                <img src="../css/img_carrossel/3.jpeg" class="d-block w-100" alt="Imagem 3">
+            </div>
+            <div class="carousel-item">
+                <img src="../css/img_carrossel/4.jpeg" class="d-block w-100" alt="Imagem 4">
+            </div>
+            <div class="carousel-item">
+                <img src="../css/img_carrossel/5.jpeg" class="d-block w-100" alt="Imagem 5">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
     <div class="info-container">
         <h3 class="info-title">Senac Santa Cruz do Sul</h3>
-        
+
         <div class="contact-info">
             <div class="contact-item">
                 <i class="fas fa-phone-alt"></i>
@@ -80,4 +108,5 @@ include_once('cabecalho.php');
     </footer>
 
 </body>
+
 </html>

@@ -11,8 +11,13 @@ $(document).ready(function () {
         let imgAtivo = $("#imgAtivo");
         let img = imgAtivo[0].files[0];
 
-        if (ativo == "") {
-            alert("Campo obrigatório!");
+        if (ativo == "" || marca == "" || tipo  == "") {
+            alert("Campos obrigatórios não preenchidos!");
+            return false;
+        }
+
+        if (!img) {
+            alert("Imagem obrigatória não selecionada!");
             return false;
         }
 
@@ -42,7 +47,7 @@ $(document).ready(function () {
             contentType: false,
             success: function (result) {
                 alert(result);
-                //location.reload();
+                location.reload();
             }
         });
     });
