@@ -5,7 +5,7 @@ include_once('cabecalho.php');
 
 ?>
 
-<body>
+<body>  
     
     <div class="inicio-container">
         <div class="welcome-content text-center">
