@@ -1,0 +1,302 @@
+body {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        height: 100%;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    .inicio-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 50px 20px;
+        background-color: #003B5C;
+        color: #fff;
+        background-image: url('https://api.senacrs.com.br/bff/site-senac/v1/file/07c9f01657a6a3ad9c8d44d5f5903407774768.png');
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px;
+    }
+
+    .welcome-content {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+    }
+
+    .logo {
+        max-width: 200px;
+        margin-bottom: 20px;
+    }
+
+    .welcome-title, .info-title {
+        font-size: 28px;
+    }
+
+    .welcome-title {
+        font-size: 36px;
+        color: #003B5C;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .welcome-message, .contact-item div p, .contact-item ul li {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .welcome-message {
+        margin-bottom: 20px;
+    }
+
+    .btn-primary, .btn-outline-primary, .btn-google-maps {
+        padding: 12px 25px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #003B5C;
+        color: white;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #00507D;
+    }
+
+    .btn-outline-primary {
+        background-color: transparent;
+        border: 2px solid #003B5C;
+        color: #003B5C;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #003B5C;
+        color: white;
+    }
+
+    .btn-google-maps {
+        background-color: #003B5C;
+        border: none;
+        color: white;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-google-maps i {
+        margin-right: 10px;
+    }
+
+    .btn-google-maps:hover {
+        transform: translateY(-2px);
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .info-container {
+        margin-top: 50px;
+        padding: 40px 20px;
+        background-color: #ffffff;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .info-title {
+        font-size: 28px;
+        color: #003B5C;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
+
+    .contact-info {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 15px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .contact-item:last-child {
+        border-bottom: none;
+    }
+
+    .contact-item i {
+        font-size: 30px;
+        color: #003B5C;
+        margin-right: 20px;
+    }
+
+    .contact-item div {
+        text-align: left;
+        flex-grow: 1; 
+    }
+
+    .contact-item div p {
+        font-size: 16px;
+        color: #333;
+        margin: 5px 0;
+    }
+
+    .contact-item ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .contact-item ul li {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    .btn-outline-primary {
+        background-color: transparent;
+        border: 2px solid #003B5C;
+        color: #003B5C;
+        padding: 12px 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #003B5C;
+        color: white;
+    }
+
+    .btn-google-maps {
+        background-color: #003B5C;
+        border: none;
+        color: white;
+        padding: 12px 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+
+    .btn-google-maps i {
+        margin-right: 10px;
+        font-size: 20px;
+    }
+
+    .btn-google-maps:hover {
+        background-color: #003B5C;
+        transform: translateY(-2px);
+    }
+
+    .footer {
+        background-color: #f0f0f0;
+        padding: 15px 0;
+        text-align: center;
+        color: #333;
+    }
+
+    .footer .text-muted {
+        font-size: 14px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .inicio-container {
+            padding: 30px 10px;
+        }
+
+        .welcome-title {
+            font-size: 1.6rem;
+        }
+
+        .welcome-message {
+            font-size: 1rem;
+        }
+
+        .info-container {
+            padding: 15px;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+        }
+
+        .contact-info {
+            gap: 10px;
+        }
+
+        .contact-item {
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        .footer .text-muted {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .welcome-title {
+            font-size: 1.4rem;
+        }
+
+        .welcome-message {
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            font-size: 1rem;
+            padding: 10px 20px;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+        }
+
+        .footer .text-muted {
+            font-size: 0.8rem;
+        }
+    }
+}

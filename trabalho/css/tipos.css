@@ -1,0 +1,82 @@
+.inativo img {
+    width: 20px;
+    height: 20px;
+}
+
+.ativo img {
+    width: 20px;
+    height: 20px;
+}
+
+.inativo:hover,
+.ativo:hover {
+    opacity: 0.8;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.table {
+    border-radius: 10px;
+}
+
+.table td,
+.table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.badge {
+    font-size: 16px;
+    padding: 0.5rem 1rem;
+}
+
+.acoes i {
+    transition: transform 0.3s;
+}
+
+.acoes i:hover {
+    transform: scale(1.1);
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 767px) {
+
+    .table td,
+    .table th {
+        font-size: 14px;
+    }
+
+    .form-title {
+        font-size: 20px;
+    }
+
+    .btn-lg {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+.muda_status, .edit {
+    cursor: pointer;
+}
