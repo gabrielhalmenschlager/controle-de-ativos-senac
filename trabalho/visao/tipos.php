@@ -82,8 +82,9 @@ include_once('menu_superior.php');
         </div>
 
         <footer class="footer bg-light text-center py-3 mt-5">
-            <div class="container">
-                <span style="color: #003B5C;">2024 Senac | Todos os direitos reservados</span>
-            </div>
-        </footer>
+        <div class="container">
+            <span style="color: #003B5C;">2024 Senac | Todos os direitos reservados</span>
+        </div>
+    </footer>
+    
 </body>
