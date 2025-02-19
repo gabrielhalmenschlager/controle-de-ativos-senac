@@ -5,8 +5,17 @@ include ('../modelo/conexao.php');
 $nome = $_POST['nome'];
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
-$admin = $_POST['admin'];
 $turma = $_POST['turma'];
+
+if (strlen($senha) < 8 ) {
+    echo "<script> alert ('A senha deve ter no mínimo 8 caracteres.')</script>";
+    exit();
+}
+
+if (!strpbrk($senha, '123456789')) {
+    echo "<script> alert ('A senha deve conter pelo menos um número.')</script>";
+    exit();
+}
 
 echo "Usuário cadastrado com suceso!!!<br>"."Nome: ".$nome."<br>"."Usuario: ". $usuario."<br>"."Turma: ".$turma."<br>";
 
