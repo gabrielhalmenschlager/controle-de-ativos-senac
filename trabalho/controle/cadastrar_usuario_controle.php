@@ -7,13 +7,31 @@ $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 $turma = $_POST['turma'];
 
-if (strlen($senha) < 8 ) {
-    echo "<script> alert ('A senha deve ter no mínimo 8 caracteres.')</script>";
+if (strlen($senha) < 8) {
+    echo "<script> alert('A senha deve ter no mínimo 8 caracteres.')
+    window.location.href = '../visao/cadastrar_usuario.php'
+    </script>";
     exit();
 }
 
-if (!strpbrk($senha, '123456789')) {
-    echo "<script> alert ('A senha deve conter pelo menos um número.')</script>";
+if (!preg_match('/\d/', $senha)) {
+    echo "<script> alert('A senha deve conter pelo menos um número.')
+    window.location.href = '../visao/cadastrar_usuario.php'
+    </script>";
+    exit();
+}
+
+if (!preg_match('/[a-zA-Z]/', $senha)) {
+    echo "<script> alert('A senha deve conter pelo menos uma letra.')
+    window.location.href = '../visao/cadastrar_usuario.php'
+    </script>";
+    exit();
+}
+
+if (preg_match('/(\d)\1{2,}/', $senha)) {
+    echo "<script> alert('A senha não pode ser uma sequência de números consecutivos.')
+    window.location.href = '../visao/cadastrar_usuario.php'
+    </script>";
     exit();
 }
 

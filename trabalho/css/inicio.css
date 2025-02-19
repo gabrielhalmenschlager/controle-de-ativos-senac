@@ -1,225 +1,229 @@
-body {
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    html, body {
-        height: 100%;
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-    }
+/* Corpo da página */
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
 
+/* Definindo um tamanho fixo para todas as imagens */
+.img {
+    width: 300px;  /* Tamanho fixo */
+    height: 200px; /* Tamanho fixo */
+    object-fit: cover; /* Garante que a imagem cubra o tamanho sem distorção */
+}
+
+/* Tamanho fixo para imagens do carrossel */
+.carousel-item img {
+    width: 100%;  /* Ocupa toda a largura do container */
+    height: 800px; /* Altura fixa */
+    object-fit: cover; /* Evita distorção e faz a imagem preencher o espaço */
+}
+
+/* Container principal */
+.inicio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #003B5C;
+    color: #fff;
+    background-image: url('https://api.senacrs.com.br/bff/site-senac/v1/file/07c9f01657a6a3ad9c8d44d5f5903407774768.png');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.welcome-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.welcome-title {
+    font-size: 36px;
+    color: #003B5C;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.welcome-message {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    padding: 12px 25px;
+    background-color: #003B5C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #00507D;
+}
+
+/* Informações de contato */
+.info-container {
+    margin-top: 50px;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.info-title {
+    font-size: 28px;
+    color: #003B5C;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.contact-info {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item i {
+    font-size: 30px;
+    color: #003B5C;
+    margin-right: 20px;
+}
+
+.contact-item div {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.contact-item div p {
+    font-size: 16px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.contact-item ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-item ul li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #f0f0f0;
+    padding: 15px 0;
+    text-align: center;
+    color: #333;
+}
+
+.footer .text-muted {
+    font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
     .inicio-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 50px 20px;
-        background-color: #003B5C;
-        color: #fff;
-        background-image: url('https://api.senacrs.com.br/bff/site-senac/v1/file/07c9f01657a6a3ad9c8d44d5f5903407774768.png');
-        background-size: cover;
-        background-position: center;
-        height: 100%;
-        flex-grow: 1;
-    }
-
-    .welcome-content {
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 40px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-    }
-
-    .logo {
-        max-width: 200px;
-        margin-bottom: 20px;
+        padding: 30px 10px;
     }
 
     .welcome-title {
-        font-size: 36px;
-        color: #003B5C;
-        font-weight: bold;
-        margin-bottom: 20px;
+        font-size: 1.6rem;
     }
 
     .welcome-message {
-        font-size: 16px;
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    .btn-primary {
-        padding: 12px 25px;
-        background-color: #003B5C;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .btn-primary:hover {
-        background-color: #00507D;
+        font-size: 1rem;
     }
 
     .info-container {
-        margin-top: 50px;
-        padding: 40px 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        width: 80%;
-        max-width: 900px;
-        margin: 0 auto;
+        padding: 15px;
     }
 
     .info-title {
-        font-size: 28px;
-        color: #003B5C;
-        margin-bottom: 30px;
-        font-weight: bold;
+        font-size: 1.5rem;
     }
 
     .contact-info {
-        margin-top: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        gap: 10px;
     }
 
     .contact-item {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 15px 0;
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    .contact-item:last-child {
-        border-bottom: none;
+        flex-direction: column;
+        text-align: left;
     }
 
     .contact-item i {
-        font-size: 30px;
-        color: #003B5C;
-        margin-right: 20px;
-    }
-
-    .contact-item div {
-        text-align: left;
-        flex-grow: 1; 
-    }
-
-    .contact-item div p {
-        font-size: 16px;
-        color: #333;
-        margin: 5px 0;
-    }
-
-    .contact-item ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .contact-item ul li {
-        font-size: 16px;
-        color: #555;
-        margin-bottom: 5px;
-    }
-    .footer {
-        background-color: #f0f0f0;
-        padding: 15px 0;
-        text-align: center;
-        color: #333;
+        font-size: 1.5rem;
     }
 
     .footer .text-muted {
-        font-size: 14px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-title {
+        font-size: 1.4rem;
     }
 
-    /* Carrossel */
-    #carouselExample {
-        height: 100px; /* Altura fixa do carrossel */
+    .welcome-message {
+        font-size: 0.9rem;
     }
 
-    #carouselExample .carousel-inner {
-        height: 100%;
+    .btn-primary {
+        font-size: 1rem;
+        padding: 10px 20px;
     }
 
-    #carouselExample .carousel-item img {
-        height: 100%;
-        object-fit: cover;
+    .contact-item i {
+        font-size: 1.2rem;
     }
 
-    /* Responsividade */
-    @media (max-width: 768px) {
-        .inicio-container {
-            padding: 30px 10px;
-        }
-
-        .welcome-title {
-            font-size: 1.6rem;
-        }
-
-        .welcome-message {
-            font-size: 1rem;
-        }
-
-        .info-container {
-            padding: 15px;
-        }
-
-        .info-title {
-            font-size: 1.5rem;
-        }
-
-        .contact-info {
-            gap: 10px;
-        }
-
-        .contact-item {
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-        }
-
-        .footer .text-muted {
-            font-size: 0.9rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .welcome-title {
-            font-size: 1.4rem;
-        }
-
-        .welcome-message {
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            font-size: 1rem;
-            padding: 10px 20px;
-        }
-
-        .contact-item i {
-            font-size: 1.2rem;
-        }
-
-        .footer .text-muted {
-            font-size: 0.8rem;
-        }
+    .footer .text-muted {
+        font-size: 0.8rem;
     }
 }
