@@ -1,8 +1,6 @@
 <?php
-
 $title = "Página Inicial Senac RS";
 include_once('cabecalho.php');
-
 ?>
 
 <body>
@@ -16,34 +14,34 @@ include_once('cabecalho.php');
         </div>
     </div>
 
-    <div id="carouselExample" class="carousel slide my-5" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../css/img_carrossel/1.jpg" class="d-block w-100" alt="Imagem 1">
+    <div class="container">
+        <div id="carouselExample" class="carousel slide my-5" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../css/img_carrossel/1.jpg" class="d-block w-100" alt="Imagem 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="../css/img_carrossel/2.jpeg" class="d-block w-100" alt="Imagem 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="../css/img_carrossel/3.jpeg" class="d-block w-100" alt="Imagem 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="../css/img_carrossel/4.jpeg" class="d-block w-100" alt="Imagem 4">
+                </div>
             </div>
-            <div class="carousel-item">
-                <img src="../css/img_carrossel/2.jpeg" class="d-block w-100" alt="Imagem 2">
-            </div>
-            <div class="carousel-item">
-                <img src="../css/img_carrossel/3.jpeg" class="d-block w-100" alt="Imagem 3">
-            </div>
-            <div class="carousel-item">
-                <img src="../css/img_carrossel/4.jpeg" class="d-block w-100" alt="Imagem 4">
-            </div>
-            <div class="carousel-item">
-                <img src="../css/img_carrossel/5.jpeg" class="d-block w-100" alt="Imagem 5">
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
 
+    </div>
     <div class="info-container">
         <h3 class="info-title">Senac Santa Cruz do Sul</h3>
 
@@ -110,3 +108,11 @@ include_once('cabecalho.php');
 </body>
 
 </html>
+
+<script>
+    var myCarousel = document.querySelector('#carouselExample')
+    var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 2000, // Tempo de transição entre slides (em milissegundos)
+        ride: 'carousel'
+    })
+</script>
