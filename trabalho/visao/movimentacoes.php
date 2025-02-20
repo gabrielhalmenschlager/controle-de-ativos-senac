@@ -77,14 +77,73 @@ $movimentacoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </div>
     </div>
 
+    <div class="container mt-5">
+        <h2 class="text-center" style="color: #054F77;">Gráfico das Movimentações Mais Movimentadas</h2>
+        <canvas id="movimentacaoGrafico" width="200" height="100"></canvas>
+    </div>
+
+
     <footer class="footer bg-light text-center py-3 mt-5">
         <div class="container">
             <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
         </div>
     </footer>
 
-<?php
+    <?php
 
-include_once('modal_movimentacoes.php');
+    include_once('modal_movimentacoes.php');
 
-?>
+    $sqlGrafico = "
+    SELECT 
+        a.descricaoAtivo, 
+        SUM(m.quantidadeMov) as totalMovimentado
+    FROM movimentacao m
+    JOIN ativo a ON a.idAtivo = m.idAtivo
+    WHERE m.statusMov = 'S'
+    GROUP BY a.descricaoAtivo
+    ORDER BY totalMovimentado DESC
+    LIMIT 10;
+";
+
+    $resultGrafico = mysqli_query($conexao, $sqlGrafico);
+    $dadosGrafico = [];
+    while ($row = mysqli_fetch_assoc($resultGrafico)) {
+        $dadosGrafico[] = $row;
+    }
+
+
+    ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Dados para o gráfico
+            var labels = <?php echo json_encode(array_column($dadosGrafico, 'descricaoAtivo')); ?>;
+            var data = <?php echo json_encode(array_column($dadosGrafico, 'totalMovimentado')); ?>;
+
+            // Configuração do gráfico
+            var ctx = document.getElementById('movimentacaoGrafico').getContext('2d');
+            var movimentacaoChart = new Chart(ctx, {
+                type: 'pie', // tipo de gráfico
+                data: {
+                    labels: labels, // nomes dos ativos
+                    datasets: [{
+                        label: 'Quantidade de Movimentações',
+                        data: data, // quantidades movimentadas
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)', // cor de fundo das barras
+                        borderColor: 'rgba(54, 162, 235, 1)', // cor das bordas
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>

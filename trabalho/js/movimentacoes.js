@@ -34,7 +34,6 @@ $(document).ready(function () {
     });
 });
 
-
 function limpar_modal() {
 
     $("#ativo").val('');
