@@ -17,14 +17,14 @@ $admin = $_SESSION['admin'];
 <body>
 
     <div class="container mt-5">
-        <h1 class="mb-4 text-center" style="color: #003B5C;">Lista de Usuários</h1>
+        <h1 class="mb-4 text-center" style="color: #054F77;">Lista de Usuários</h1>
 
         <table class="table table-striped table-bordered table-hover" id="tabela-personalizada">
             <thead>
                 <tr>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Nome</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Usuário</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Turma</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Nome</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Usuário</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Turma</th>
                 </tr>
             </thead>
             <tbody>
@@ -82,7 +82,7 @@ $admin = $_SESSION['admin'];
 
     <footer class="footer bg-light text-center py-3 mt-5">
         <div class="container">
-            <span style="color: #003B5C;">2024 Senac | Todos os direitos reservados</span>
+            <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
         </div>
     </footer>
 

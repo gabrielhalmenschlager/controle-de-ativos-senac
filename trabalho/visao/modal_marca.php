@@ -5,7 +5,7 @@ include_once('cabecalho.php');
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #003B5C; color: white;">
+            <div class="modal-header" style="background-color: #054F77; color: white;">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Marcas</h1>
                 <button type="button" onclick="limpar_modal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -18,7 +18,7 @@ include_once('cabecalho.php');
                     </div>
                     <div class="modal-footer">
                         <button type="reset" onclick="limpar_modal()" class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Limpar</button>
-                        <button type="button" class="btn salvar" style="background-color: #003B5C; color: white;" id="salvar"><i class="salvar"></i> Salvar</button>
+                        <button type="button" class="btn salvar" style="background-color: #054F77; color: white;" id="salvar"><i class="bi bi-save"></i> Salvar</button>
                     </div>
                 </form>
             </div>
@@ -28,12 +28,17 @@ include_once('cabecalho.php');
 
 <style>
     .modal-content {
-        background-color: #f9f9f9;
+        background-color: #bfddf3;
         border-radius: 15px;
     }
 
+    h1 {
+        color: white;
+        font-size: 2rem;
+    }
+
     .modal-header {
-        border-bottom: 2px solid #003B5C;
+        border-bottom: 2px solid #054F77;
     }
 
     .modal-body {
@@ -71,7 +76,7 @@ include_once('cabecalho.php');
     }
 
     .btn-close:hover {
-        background-color: #f0f0f0;
+        background-color: #bfddf3;
         border-radius: 50%;
     }
 

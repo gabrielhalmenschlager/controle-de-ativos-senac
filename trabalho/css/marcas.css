@@ -32,13 +32,8 @@ body {
     vertical-align: middle;
 }
 
-.btn-outline-primary {
-    border-color: #007bff;
-    color: #007bff;
-}
-
-.btn-outline-primary:hover {
-    background-color: #007bff;
+.btn-outline-secondary {
+    background-color: gray !important;
     color: white;
 }
 

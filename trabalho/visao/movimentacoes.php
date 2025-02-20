@@ -38,20 +38,20 @@ $movimentacoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
     </div>
     <div class="container mt-5">
         <div class="d-flex flex-column align-items-center">
-            <h1 class="mb-4 text-center" style="color: #003B5C;">Lista de Movimentações</h1>
+            <h1 class="mb-4 text-center" style="color: #054F77;">Lista de Movimentações</h1>
 
             <table class="table table-striped table-bordered table-hover" id="tabela-personalizada">
                 <thead>
                     <tr>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Ativo</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Tipo</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Quantidade Uso</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Quantidade Última Mov</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Quantidade Total</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Local Origem</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Local Destino</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Descrição</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Data</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Ativo</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Tipo</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Quantidade Uso</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Quantidade Última Mov</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Quantidade Total</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Local Origem</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Local Destino</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Descrição</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Data</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,7 +79,7 @@ $movimentacoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     <footer class="footer bg-light text-center py-3 mt-5">
         <div class="container">
-            <span style="color: #003B5C;">2024 Senac | Todos os direitos reservados</span>
+            <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
         </div>
     </footer>
 

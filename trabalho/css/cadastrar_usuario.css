@@ -30,10 +30,9 @@ body, html {
     margin-bottom: 20px;
 }
 
-.form-title {
+h2 {
     font-size: 28px;
-    color: #003B5C;
-    color: #003B5C; /* Cor principal do Senac */
+    color: #054F77 !important;
     margin-bottom: 25px;
     font-weight: bold;
 }
@@ -49,7 +48,7 @@ body, html {
 }
 
 .btn-outline-primary {
-    background-color: #003B5C;
+    background-color: #054F77;
     border: none;
     color: white;
     padding: 12px 20px;

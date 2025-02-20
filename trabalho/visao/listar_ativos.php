@@ -34,21 +34,21 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <body>
 
     <div class="container mt-5">
-        <h1 class="mb-4 text-center" style="color: #003B5C;">Lista de Ativos</h1>
+        <h1 class="mb-4 text-center" style="color: #054F77;">Lista de Ativos</h1>
 
         <table class="table table-striped table-bordered table-hover" id="tabela-personalizada">
             <thead>
                 <tr>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Descrição</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Marca</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Tipo</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Quantidade</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Quantidade Min</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Observação</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Data Cadastro</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Usuario Cadastro</th>
-                    <th style="background-color: #003B5C; color: white;" scope="col">Imagem</th>
-                    <th style="background-color: #003B5C; color: white; text-align:center;" scope="col">Ações</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Descrição</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Marca</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Tipo</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Quantidade</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Quantidade Min</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Observação</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Data Cadastro</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Usuario Cadastro</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Imagem</th>
+                    <th style="background-color: #054F77; color: white; text-align:center;" scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -123,7 +123,7 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     <footer class="footer bg-light text-center py-3 mt-5">
         <div class="container">
-            <span style="color: #003B5C;">2024 Senac | Todos os direitos reservados</span>
+            <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
         </div>
     </footer>
 

@@ -17,17 +17,18 @@ include_once('menu_superior.php');
         <div class="d-flex flex-column align-items-center">
             <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastrar Tipos</button>
         </div>
+    </div>
 
         <div class="container mt-5">
-            <h1 class="mb-4 text-center" style="color: #003B5C;">Lista de Tipos</h1>
+            <h1 class="mb-4 text-center" style="color: #054F77;">Lista de Tipos</h1>
 
             <table class="table table-striped table-bordered table-hover" id="tabela-personalizada">
                 <thead>
                     <tr>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Id</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Descrição</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col">Status</th>
-                        <th style="background-color: #003B5C; color: white;" scope="col" style="text-align:center;">Ações</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Id</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Descrição</th>
+                        <th style="background-color: #054F77; color: white;" scope="col">Status</th>
+                        <th style="background-color: #054F77; color: white;" scope="col" style="text-align:center;">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,9 +82,9 @@ include_once('menu_superior.php');
             ?>
         </div>
 
-        <footer class="footer bg-light text-center py-3 mt-5">
+    <footer class="footer bg-light text-center py-3 mt-5">
         <div class="container">
-            <span style="color: #003B5C;">2024 Senac | Todos os direitos reservados</span>
+            <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
         </div>
     </footer>
     

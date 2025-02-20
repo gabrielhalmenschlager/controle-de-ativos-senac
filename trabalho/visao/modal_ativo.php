@@ -3,7 +3,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content rounded-4 shadow-lg">
-            <div class="modal-header" style="background-color: #003B5C; color: white;">
+            <div class="modal-header" style="background-color: #054F77; color: white;">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Ativo</h1>
                 <button type="button" onclick="limpar_modal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -25,7 +25,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                         <label for="tipo" class="form-label">Tipo</label>
+                        <label for="tipo" class="form-label">Tipo</label>
                         <select class="form-select shadow-sm border-light" id="tipo" name="tipo" required>
                             <option selected value="">Selecione o Tipo</option>
                             <?php
@@ -58,7 +58,7 @@
             </div>
             <div class="modal-footer">
                 <button type="reset" onclick="limpar_modal()" class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Limpar</button>
-                <button type="button" class="btn" style="background-color: #003B5C; color: white;" id="salvar_info"><i class="bi bi-save"></i> Salvar</button>
+                <button type="button" class="btn" style="background-color: #054F77; color: white;" id="salvar_info"><i class="bi bi-save"></i> Salvar</button>
             </div>
         </div>
     </div>
@@ -66,12 +66,13 @@
 
 <style>
     .modal-content {
-        background-color: #f9f9f9;
+        background-color: #bfddf3;
         border-radius: 15px;
     }
 
-    .modal-header {
-        border-bottom: 2px solid #003B5C;
+    h1 {
+        color: white;
+        font-size: 2rem;
     }
 
     .modal-body {
@@ -88,13 +89,8 @@
 
     .form-control:focus,
     .form-select:focus {
-        border-color: #003B5C;
+        border-color: gray;
         box-shadow: 0 0 5px rgba(0, 59, 92, 0.5);
-    }
-
-    .btn-outline-secondary {
-        border-radius: 10px;
-        padding: 10px 20px;
     }
 
     .btn {
@@ -103,15 +99,16 @@
         font-weight: 600;
     }
 
-    .btn-close {
-        background-color: transparent;
-        border: none;
-    }
-
     .btn-close:hover {
-        background-color: #f0f0f0;
+        background-color: #bfddf3;
         border-radius: 50%;
     }
+
+    .btn-outline-secondary {
+        background-color: gray !important;
+        color: white;
+    }
+
 
     .modal-footer button {
         padding: 12px 25px;
@@ -121,19 +118,6 @@
         font-size: 1.5rem;
     }
 
-    /* Animations */
-    .modal.fade .modal-dialog {
-        transform: translate(0, -50px);
-        transition: transform 0.3s ease;
-    }
-
-    .modal.fade.show .modal-dialog {
-        transform: translate(0, 0);
-    }
-
-    .modal-content {
-        animation: fadeIn 0.5s ease-in-out;
-    }
 
     @keyframes fadeIn {
         from {

@@ -9,7 +9,7 @@
 html, body {
     height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #bfddf3;
 }
 
 /* Definindo um tamanho fixo para todas as imagens */
@@ -60,7 +60,7 @@ html, body {
 
 .welcome-title {
     font-size: 36px;
-    color: #003B5C;
+    color: #054F77;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -73,7 +73,7 @@ html, body {
 
 .btn-primary {
     padding: 12px 25px;
-    background-color: #003B5C;
+    background-color: #054F77;
     color: white;
     border: none;
     border-radius: 5px;
@@ -101,7 +101,7 @@ html, body {
 
 .info-title {
     font-size: 28px;
-    color: #003B5C;
+    color: #054F77;
     margin-bottom: 30px;
     font-weight: bold;
 }
@@ -127,7 +127,7 @@ html, body {
 
 .contact-item i {
     font-size: 30px;
-    color: #003B5C;
+    color: #054F77;
     margin-right: 20px;
 }
 

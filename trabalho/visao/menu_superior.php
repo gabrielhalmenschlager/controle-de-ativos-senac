@@ -68,7 +68,7 @@
     }
 
     .navbar {
-        background-color: #003B5C;
+        background-color: #054F77;
     }
 
     .navbar-brand {
@@ -109,7 +109,7 @@
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: #003B5C;
+        background-color: #054F77;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         min-width: 180px;

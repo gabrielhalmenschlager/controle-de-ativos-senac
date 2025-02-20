@@ -14,7 +14,7 @@
 }
 
 body {
-    background-color: #f8f9fa;
+    background-color: #bfddf3 !important;
 }
 
 .form-title {
@@ -32,13 +32,12 @@ body {
     vertical-align: middle;
 }
 
-.btn-outline-primary {
-    border-color: #007bff;
-    color: #007bff;
+.btn {
+    background-color: #054F77;
 }
 
 .btn-outline-primary:hover {
-    background-color: #007bff;
+    background-color: #054F77;
     color: white;
 }
 
@@ -57,6 +56,11 @@ body {
 
 .modal-content {
     border-radius: 10px;
+}
+
+.footer {
+    background-color: #bfddf3 !important;
+    border-color: #bfddf3 !important;
 }
 
 /* Responsividade */

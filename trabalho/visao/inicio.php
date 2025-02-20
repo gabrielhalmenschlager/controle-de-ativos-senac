@@ -1,16 +1,17 @@
 <?php
 $title = "Página Inicial Senac RS";
 include_once('cabecalho.php');
+include_once('menu_superior.php');
 ?>
 
 <body>
 
-    <div class="inicio-container">
+    <div class="inicio-container mt-5">
         <div class="welcome-content text-center">
             <img src="https://www.senacrs.com.br/assets/layout/images/logo_senac.png" alt="Logo Senac" class="logo mb-4 logo" >
             <h1 class="welcome-title">Bem-vindo ao Senac RS</h1>
             <p class="welcome-message">A educação que prepara você para o mercado de trabalho. Faça seu cadastro e tenha acesso a nossos cursos e serviços!</p>
-            <a href="cadastrar_usuario.php" class="btn-primary">Cadastrar-se</a>
+            <a href="cadastrar_usuario.php" class="btn btn-primary" style="background-color: #054F77;">Cadastrar-se</a>
         </div>
     </div>
 
@@ -111,7 +112,7 @@ include_once('cabecalho.php');
 
     <footer class="footer bg-light text-center py-3 mt-5">
         <div class="container">
-            <span style="color: #003B5C;">2024 Senac | Todos os direitos reservados</span>
+            <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
         </div>
     </footer>
 
