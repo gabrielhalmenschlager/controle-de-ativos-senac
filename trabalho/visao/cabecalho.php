@@ -1,8 +1,3 @@
-<?php
-$title = "Página Inicial Senac RS";
-include_once('cabecalho.php');
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 

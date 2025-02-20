@@ -9,6 +9,14 @@ h1 {
     font-size: 2rem;
 }
 
+.navbar {
+    background-color: #054F77 !important;
+}
+
+.sub-menu {
+    background-color: #054F77 !important;
+}
+
 .contorno_image{
     width: 100%;
 }

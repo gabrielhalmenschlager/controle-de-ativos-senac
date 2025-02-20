@@ -79,9 +79,12 @@ $movimentacoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     <div class="container mt-5">
         <h2 class="text-center" style="color: #054F77;">Gráfico das Movimentações Mais Movimentadas</h2>
-        <canvas id="movimentacaoGrafico" width="200" height="100"></canvas>
+        <div style="display: flex; align-items: center; width: 100%; justify-content: center;">
+            <div style="height: 400px; width: 400px;">
+                <canvas id="movimentacaoGrafico" width="200px" height="100px"></canvas>
+            </div>
+        </div>
     </div>
-
 
     <footer class="footer bg-light text-center py-3 mt-5">
         <div class="container">
