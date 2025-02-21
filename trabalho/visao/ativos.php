@@ -13,11 +13,13 @@ include_once('menu_superior.php');
 
 <div class="container mt-5">
     <div class="d-flex justify-content-center">
-        <button type="button" id="btn_modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastrar Ativos</button>
+        <button type="button" id="btn_modal" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Cadastrar Ativos
+        </button>
     </div>
 </div>
 
-<?php 
+<?php
 
 include_once('listar_ativos.php');
 include_once('modal_ativo.php');

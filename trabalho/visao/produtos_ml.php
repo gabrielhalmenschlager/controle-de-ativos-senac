@@ -36,7 +36,7 @@ foreach ($ativos as $ativo) {
 
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4" style="color: #003B5C;">Resultados da Pesquisa</h1>
+        <h1 class="text-center mb-4" style="color: #054F77; font-size: 2rem;">Resultados da Pesquisa</h1>
         <div class="row justify-content-center g-4">
             <?php
                 echo $resultado;

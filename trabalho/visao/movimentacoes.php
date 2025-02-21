@@ -34,8 +34,11 @@ $movimentacoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 <div class="container mt-5">
     <div class="d-flex justify-content-center">
-        <button type="button" id="btn_modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastrar Movimentações</button>
+        <button type="button" id="btn_modal" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Cadastrar Movimentações
+        </button>
     </div>
+
     <div class="container mt-5">
         <div class="d-flex flex-column align-items-center">
             <h1 class="mb-4 text-center" style="color: #054F77;">Lista de Movimentações</h1>
@@ -121,29 +124,38 @@ $movimentacoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     <script>
         $(document).ready(function() {
-            // Dados para o gráfico
             var labels = <?php echo json_encode(array_column($dadosGrafico, 'descricaoAtivo')); ?>;
             var data = <?php echo json_encode(array_column($dadosGrafico, 'totalMovimentado')); ?>;
 
-            // Configuração do gráfico
             var ctx = document.getElementById('movimentacaoGrafico').getContext('2d');
             var movimentacaoChart = new Chart(ctx, {
-                type: 'pie', // tipo de gráfico
+                type: 'pie',
                 data: {
-                    labels: labels, // nomes dos ativos
+                    labels: labels,
                     datasets: [{
                         label: 'Quantidade de Movimentações',
-                        data: data, // quantidades movimentadas
-                        backgroundColor: 'rgba(54, 162, 235, 0.6)', // cor de fundo das barras
-                        borderColor: 'rgba(54, 162, 235, 1)', // cor das bordas
-                        borderWidth: 1
+                        data: data,
+                        backgroundColor: ['#36A2EB', '#FFA500', '#FFCD56', '#4BC0C0', '#9966FF', '#FF6655', '#FF3388', '#FF3355', '#FF0000'],
+                        borderColor: '#fff',
+                        borderWidth: 2
                     }]
                 },
                 options: {
                     responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw + ' movimentações';
+                                }
+                            }
+                        },
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                fontSize: 14,
+                                fontColor: '#054F77'
+                            }
                         }
                     }
                 }

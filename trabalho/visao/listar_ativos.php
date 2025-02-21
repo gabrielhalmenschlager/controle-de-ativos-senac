@@ -107,7 +107,7 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <div class="modal fade" id="modalImagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background-color: #003B5C; color: white;">
+                <div class="modal-header" style="background-color: white; color: white;">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Imagem do Ativo</h1>
                     <button type="button" onclick="limpar_modal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

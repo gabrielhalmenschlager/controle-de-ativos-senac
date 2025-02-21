@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="https://www.senacrs.com.br/assets/layout/images/logo_senac_white.png" alt="Logo" style="height: 50px; transition: transform 0.3s ease;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Senac_logo.svg/2560px-Senac_logo.svg.png" alt="Logo" style="height: 50px; transition: transform 0.3s ease;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -64,11 +64,7 @@
 <style>
 
     #sair {
-        color: red;
-    }
-
-    .navbar {
-        background-color: #054F77;
+        color: red !important;
     }
 
     .navbar-brand {

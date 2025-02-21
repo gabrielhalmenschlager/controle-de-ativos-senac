@@ -14,8 +14,10 @@ include_once('menu_superior.php');
 
 <body>
     <div class="container mt-5">
-        <div class="d-flex flex-column align-items-center">
-            <button type="button" onclick="limpar_modal()" id="btn_modal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastrar Marcas</button>
+        <div class="d-flex justify-content-center">
+            <button type="button" id="btn_modal" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Cadastrar Marcas
+            </button>
         </div>
 
         <div class="container mt-5">
@@ -76,15 +78,15 @@ include_once('menu_superior.php');
                 </tbody>
             </table>
             <input type="hidden" id="idMarca" name="idMarca">
-        <?php 
-            include_once('modal_marca.php'); 
-        ?>
-    </div>
-
-    <footer class="footer bg-light text-center py-3 mt-5">
-        <div class="container">
-            <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
+            <?php
+            include_once('modal_marca.php');
+            ?>
         </div>
-    </footer>
+
+        <footer class="footer bg-light text-center py-3 mt-5">
+            <div class="container">
+                <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
+            </div>
+        </footer>
 
 </body>

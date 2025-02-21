@@ -16,7 +16,8 @@ function busca_info_bd($conexao, $tabela, $coluna_where = false, $valor_where = 
 
 function busca_prod_ml($pesquisa){
     
-    $url = "https://api.mercadolibre.com/sites/MLB/search?q=" . urlencode($pesquisa);
+    $pesq = urlencode($pesquisa);
+    $url = "https://api.mercadolibre.com/sites/MLB/search?q=" . $pesq . "&condition=new&status=active&sort=best_seller&limit=20";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

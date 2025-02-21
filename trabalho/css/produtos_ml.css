@@ -4,17 +4,12 @@ body {
     color: #333;
 }
 
-h1 {
-    color: #054F77 !important;
-    font-size: 2rem;
-}
-
 .navbar {
-    background-color: #054F77 !important;
+    background-color: gray !important;
 }
 
 .sub-menu {
-    background-color: #054F77 !important;
+    background-color: gray !important;
 }
 
 .contorno_image{

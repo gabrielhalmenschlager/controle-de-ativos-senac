@@ -1,3 +1,16 @@
+.custom-btn {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+}
+
+.custom-btn:hover {
+    background-color: #FFA500;
+    border-color: #FFA500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
 .inativo img {
     width: 20px;
     height: 20px;
@@ -33,7 +46,7 @@ body {
 }
 
 .btn {
-    background-color: #054F77;
+    background-color: #FFA500;
 }
 
 .btn-outline-primary:hover {

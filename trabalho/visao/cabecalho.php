@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="../css/marcas.css">
     <link rel="stylesheet" href="../css/tipos.css">
     <link rel="stylesheet" href="../css/produtos_ml.css">
+    <link rel="stylesheet" href="../css/movimentacoes.css">
 
     <script>
         $(document).ready(function() {

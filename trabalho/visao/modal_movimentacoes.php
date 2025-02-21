@@ -6,7 +6,7 @@ include_once('cabecalho.php');
   <div class="modal-dialog modal-lg">
     <div class="modal-content rounded-4 shadow-lg">
       <div class="modal-header" style="background-color: #054F77; color: white;">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Movimentações</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: white !important;">Cadastrar Movimentações</h1>
         <button type="button" onclick="limpar_modal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
