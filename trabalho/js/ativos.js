@@ -11,13 +11,22 @@ $(document).ready(function () {
         let imgAtivo = $("#imgAtivo");
         let img = imgAtivo[0].files[0];
 
-        if (ativo == "" || marca == "" || tipo  == "") {
+        $(".form-control, .form-select").removeClass("borda-vermelha");
+        $("#imgAtivo").removeClass("borda-vermelha");
+
+        if (ativo == "" || marca == "" || tipo == "") { 
             alert("Campos obrigatórios não preenchidos!");
+            
+            if (ativo == "") $("#ativo").addClass("borda-vermelha");
+            if (marca == "") $("#marca").addClass("borda-vermelha");
+            if (tipo == "") $("#tipo").addClass("borda-vermelha");
+
             return false;
         }
 
         if (!img) {
             alert("Imagem obrigatória não selecionada!");
+            $("#imgAtivo").addClass("borda-vermelha");
             return false;
         }
 
@@ -129,8 +138,10 @@ $(document).ready(function () {
         $("#quantidadeMin").val('');
         $("#observacao").val('');
         $("#imgAtivo").val('');
+        $("#imgAtivo").val('');
         $("#idAtivo").val('');
         $(".divPreview").attr("style", "display:none")
+        $(".form-control, .form-select").removeClass("borda-vermelha");
     }
 
     document.addEventListener('DOMContentLoaded', function () {

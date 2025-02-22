@@ -2,6 +2,10 @@ body {
     background-color: #bfddf3;
 }
 
+.borda-vermelha {
+    border-color: red !important;
+}
+
 .exampleModalLabel {
     color: white !important;
     background-color: white;

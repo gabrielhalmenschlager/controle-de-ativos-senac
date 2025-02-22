@@ -8,8 +8,15 @@ $(document).ready(function () {
         let localDestino = $("#localDestino").val();
         let descricaoMovimentacao = $("#descricaoMovimentacao").val();
 
+        $(".form-control, .form-select").removeClass("borda-vermelha");
+
         if (idAtivo == "" || tipoMovimentacao == "" || quantidadeMov == "") {
             alert("Campos obrigatórios não preenchidos!");
+
+            if (idAtivo == "") $("#idAtivo").addClass("borda-vermelha");
+            if (tipoMovimentacao == "") $("#tipoMovimentacao").addClass("borda-vermelha");
+            if (quantidadeMov == "") $("#quantidadeMov").addClass("borda-vermelha");
+
             return false;
         }
 
@@ -42,5 +49,6 @@ function limpar_modal() {
     $("#localOrigem").val('');
     $("#localDestino").val('');
     $("#descricaoMovimentacao").val('');
+    $(".form-control, .form-select").removeClass("borda-vermelha");
 
 }

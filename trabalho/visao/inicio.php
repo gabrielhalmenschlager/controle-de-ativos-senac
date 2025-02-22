@@ -8,23 +8,16 @@ include_once('menu_superior.php');
 
     <div class="inicio-container mt-5">
         <div class="welcome-content text-center">
-            <img src="https://www.senacrs.com.br/assets/layout/images/logo_senac.png" alt="Logo Senac" class="logo mb-4 logo" >
+            <img src="https://www.senacrs.com.br/assets/layout/images/logo_senac.png" alt="Logo Senac" class="logo mb-4 logo">
             <h1 class="welcome-title">Bem-vindo ao Senac RS</h1>
-            <p class="welcome-message">A educação que prepara você para o mercado de trabalho. Faça seu cadastro e tenha acesso a nossos cursos e serviços!</p>
+            <p class="welcome-message">Acesse o Sistema de Ativos do Senac para consultar, gerenciar e realizar atividades relacionadas aos seus cursos e materiais.</p>
             <a href="cadastrar_usuario.php" class="btn btn-primary" style="background-color: #054F77;">Cadastrar-se</a>
         </div>
     </div>
 
+
     <div class="container mt-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"></li>
-            </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="../css/img_carrossel/1.jpg" class="d-block w-100 img" alt="Imagem 1">

@@ -14,9 +14,16 @@ html, body {
 
 /* Definindo um tamanho fixo para todas as imagens */
 .img {
+    border: 5px solid #FFA500;  /* Cor azul escuro, pode ser personalizada */
     width: 300px;  /* Tamanho fixo */
     height: 200px; /* Tamanho fixo */
     object-fit: cover; /* Garante que a imagem cubra o tamanho sem distorção */
+}
+
+#carouselExampleIndicators {
+    border: 15px solid #054F77;  /* Cor azul escuro, pode ser personalizada */
+    border-radius: 5px;         /* Bordas arredondadas */
+    padding: 0px;                /* Espaçamento interno, pode ser ajustado */
 }
 
 /* Tamanho fixo para imagens do carrossel */

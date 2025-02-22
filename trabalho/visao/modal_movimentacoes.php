@@ -12,7 +12,7 @@ include_once('cabecalho.php');
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="idAtivo" class="form-label">Ativo</label>
+            <label for="idAtivo" class="form-label">Ativo<span style="color: red;"> * </span></label>
             <select class="form-select shadow-sm border-light" id="idAtivo" name="idAtivo" required>
               <option selected value="">Selecione</option>
               <?php
@@ -23,7 +23,7 @@ include_once('cabecalho.php');
             </select>
           </div>
           <div class="mb-3">
-            <label for="tipoMovimentacao" class="form-label">Tipo Movimentações</label>
+            <label for="tipoMovimentacao" class="form-label">Tipo Movimentações<span style="color: red;"> * </span></label>
             <select class="form-select shadow-sm border-light" id="tipoMovimentacao" name="tipoMovimentacao" required>
               <option selected value="">Selecione</option>
               <option value="Adicionar">Adicionar</option>
@@ -32,7 +32,7 @@ include_once('cabecalho.php');
             </select>
           </div>
           <div class="mb-3">
-            <label class="form-label">Quantidade</label>
+            <label class="form-label">Quantidade<span style="color: red;"> * </span></label>
             <input type="number" class="form-control shadow-sm border-light" id="quantidadeMov" name="quantidadeMov" placeholder="Quantidade do Ativo" required>
           </div>
           <div class="mb-3">
@@ -47,12 +47,15 @@ include_once('cabecalho.php');
             <label class="form-label">Descrição</label>
             <input type="text" class="form-control shadow-sm border-light" id="descricaoMovimentacao" name="descricaoMovimentacao" placeholder="Observações adicionais">
           </div>
+          <div class="mb-3">
+            <span style="color: red;"> * Campos Obrigatórios </span>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="reset" onclick="limpar_modal()" class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Limpar</button>
         <button type="button" class="btn salvar" style="background-color: #054F77; color: white;" id="salvar"><i class="bi bi-save"></i> Salvar</button>
-        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -64,9 +67,9 @@ include_once('cabecalho.php');
   }
 
   h1 {
-        color: white;
-        font-size: 2rem;
-    }
+    color: white;
+    font-size: 2rem;
+  }
 
   .modal-header {
     border-bottom: 2px solid #054F77;

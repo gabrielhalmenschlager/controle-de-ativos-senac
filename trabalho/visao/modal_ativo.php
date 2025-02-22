@@ -10,11 +10,11 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="ativo" class="form-label">Descrição do Ativo</label>
+                        <label for="ativo" class="form-label">Descrição do Ativo<span style="color: red;"> * </span></label>
                         <input type="text" class="form-control shadow-sm border-light" id="ativo" name="ativo" placeholder="Digite a descrição do ativo" required>
                     </div>
                     <div class="mb-3">
-                        <label for="marca" class="form-label">Marca</label>
+                        <label for="marca" class="form-label">Marca<span style="color: red;"> * </span></label>
                         <select class="form-select shadow-sm border-light" id="marca" name="marca" required>
                             <option selected value="">Selecione a Marca</option>
                             <?php
@@ -25,7 +25,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tipo" class="form-label">Tipo</label>
+                        <label for="tipo" class="form-label">Tipo<span style="color: red;"> * </span></label>
                         <select class="form-select shadow-sm border-light" id="tipo" name="tipo" required>
                             <option selected value="">Selecione o Tipo</option>
                             <?php
@@ -48,8 +48,11 @@
                         <input type="text" class="form-control shadow-sm border-light" id="observacao" name="observacao" placeholder="Observações adicionais">
                     </div>
                     <div class="mb-3">
-                        <label for="imgAtivo" class="form-label">Imagem Ativo</label>
+                        <label for="imgAtivo" class="form-label">Imagem Ativo<span style="color: red;"> * </span></label>
                         <input class="form-control" accept="image/png, image/jpeg" type="file" id="imgAtivo">
+                    </div>
+                    <div class="mb-3">
+                        <span style="color: red;"> * Campos Obrigatórios </span>
                     </div>
                     <div class="mb-3 divPreview" style="display: none;">
                         <img id="imgPreview" style="width: 300px; height: 300px; display: block; margin: 0 auto;">
