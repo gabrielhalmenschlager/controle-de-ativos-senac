@@ -68,31 +68,31 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <img onclick="abrirImagem('<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/' . $ativos['urlImagem']; ?>')" src="<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/' . $ativos['urlImagem']; ?>" style="width: 70px; height: 70px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Imagem">
                         </td>
                         <td>
-                        <div class="acoes" style="display: flex; justify-content: space-around;">
-                            <div class="muda_status" style="margin-right: 20px;"> <!-- Adicionando margem à direita -->
-                                <?php
-                                if ($ativos['statusAtivo'] == "S") {
-                                ?>
-                                    <div class="inativo" onclick="muda_status('N', '<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Ativo">
-                                        <img src="https://png.pngtree.com/png-clipart/20221028/ourmid/pngtree-right-symbol-png-image_6400869.png" alt="Ativo" style="width: 20px; height: 20px;">
-                                    </div>
-                                <?php
-                                } else {
-                                ?>
-                                    <div class="ativo" onclick="muda_status('S', '<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Inativo">
-                                        <img src="https://png.pngtree.com/png-vector/20221215/ourmid/pngtree-wrong-icon-png-image_6525689.png" alt="Inativo" style="width: 20px; height: 20px;">
-                                    </div>
-                                <?php
-                                }
-                                ?>
+                            <div class="acoes" style="display: flex; justify-content: space-around;">
+                                <div class="muda_status" style="margin-right: 20px;"> <!-- Adicionando margem à direita -->
+                                    <?php
+                                    if ($ativos['statusAtivo'] == "S") {
+                                    ?>
+                                        <div class="inativo" onclick="muda_status('N', '<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Ativo">
+                                            <img src="https://png.pngtree.com/png-clipart/20221028/ourmid/pngtree-right-symbol-png-image_6400869.png" alt="Ativo" style="width: 20px; height: 20px;">
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <div class="ativo" onclick="muda_status('S', '<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Inativo">
+                                            <img src="https://png.pngtree.com/png-vector/20221215/ourmid/pngtree-wrong-icon-png-image_6525689.png" alt="Inativo" style="width: 20px; height: 20px;">
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div class="edit" style="margin-right: 20px;" onclick="editar('<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/4226/4226577.png" alt="Editar" style="width: 20px; height: 20px;">
+                                </div>
+                                <div class="remover" onclick="remover('<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt="Remover" style="width: 20px; height: 20px;">
+                                </div>
                             </div>
-                            <div class="edit" style="margin-right: 20px;" onclick="editar('<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
-                                <img src="https://cdn-icons-png.flaticon.com/512/4226/4226577.png" alt="Editar" style="width: 20px; height: 20px;">
-                            </div>
-                            <div class="remover" onclick="remover('<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt="Remover" style="width: 20px; height: 20px;">
-                            </div>
-                        </div>
                         </td>
                     </tr>
                 <?php
@@ -121,19 +121,91 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </div>
     </div>
 
-    <footer class="footer bg-light text-center py-3 mt-5">
-        <div class="container">
-            <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
-        </div>
-    </footer>
-
     <script>
         function abrirImagem(url) {
-            
+
             document.getElementById('imagemModal').src = url;
 
             new bootstrap.Modal(document.getElementById('modalImagem')).show();
         }
     </script>
+
+    <div class="container mt-5">
+        <h2 class="text-center" style="color: #054F77;">Gráfico dos Ativos Com Mais Quantidades</h2>
+        <div style="display: flex; align-items: center; width: 100%; justify-content: center;">
+            <div style="height: 400px; width: 400px;">
+                <canvas id="movimentacaoGrafico" width="200px" height="100px"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <?php
+
+    $sqlGrafico = "
+    SELECT 
+        a.descricaoAtivo, 
+        a.quantidadeAtivo
+    FROM ativo a
+    WHERE a.statusAtivo = 'S'
+    ORDER BY a.quantidadeAtivo DESC
+    LIMIT 10;
+    ";
+
+    $resultGrafico = mysqli_query($conexao, $sqlGrafico);
+    $dadosGrafico = [];
+    while ($row = mysqli_fetch_assoc($resultGrafico)) {
+        $dadosGrafico[] = $row;
+    }
+
+    ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var labels = <?php echo json_encode(array_column($dadosGrafico, 'descricaoAtivo')); ?>;
+            var data = <?php echo json_encode(array_column($dadosGrafico, 'quantidadeAtivo')); ?>;
+
+            var ctx = document.getElementById('movimentacaoGrafico').getContext('2d');
+            var movimentacaoChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Quantidade de Ativos',
+                        data: data,
+                        backgroundColor: ['#36A2EB', '#FFA500', '#FFCD56', '#4BC0C0', '#9966FF', '#FF6655', '#FF3388', '#FF3355', '#FF0000'],
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw + ' ativos';
+                                }
+                            }
+                        },
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                fontSize: 14,
+                                fontColor: '#054F77'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <footer class="footer bg-light text-center py-3 mt-5">
+        <div class="container">
+            <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
+        </div>
+    </footer>
 
 </body>
