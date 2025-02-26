@@ -44,9 +44,6 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <th style="background-color: #054F77; color: white;" scope="col">Tipo</th>
                     <th style="background-color: #054F77; color: white;" scope="col">Quantidade</th>
                     <th style="background-color: #054F77; color: white;" scope="col">Quantidade Min</th>
-                    <th style="background-color: #054F77; color: white;" scope="col">Observação</th>
-                    <th style="background-color: #054F77; color: white;" scope="col">Data Cadastro</th>
-                    <th style="background-color: #054F77; color: white;" scope="col">Usuario Cadastro</th>
                     <th style="background-color: #054F77; color: white;" scope="col">Imagem</th>
                     <th style="background-color: #054F77; color: white; text-align:center;" scope="col">Ações</th>
                 </tr>
@@ -54,22 +51,32 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <tbody>
                 <?php
                 foreach ($ativos_bd as $ativos) {
+                    $alertaQuantidade = ($ativos['quantidadeAtivo'] < $ativos['quantidadeMinAtivo']) ? true : false;
                 ?>
                     <tr>
                         <td><?php echo $ativos['descricaoAtivo']; ?></td>
                         <td><?php echo $ativos['marca']; ?></td>
                         <td><?php echo $ativos['tipo']; ?></td>
-                        <td><?php echo $ativos['quantidadeAtivo']; ?></td>
-                        <td><?php echo $ativos['quantidadeMinAtivo']; ?></td>
-                        <td><?php echo $ativos['observacaoAtivo']; ?></td>
-                        <td><?php echo $ativos['dataCadastro']; ?></td>
-                        <td><?php echo $ativos['usuario']; ?></td>
+                        <td>
+                            <?php echo $ativos['quantidadeAtivo']; ?>
+                            <?php if ($alertaQuantidade) { ?>
+                                <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Alerta" style="width: 20px; height: 20px; margin-left: 10px;"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Quantidade abaixo do mínimo!">
+                            <?php } ?>
+                        </td>
+                        <td>
+                            <?php echo $ativos['quantidadeMinAtivo']; ?>
+                            <?php if ($alertaQuantidade) { ?>
+                                <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Alerta" style="width: 20px; height: 20px; margin-left: 10px;"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Quantidade mínima acima da quantidade total!">
+                            <?php } ?>
+                        </td>
                         <td>
                             <img onclick="abrirImagem('<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/' . $ativos['urlImagem']; ?>')" src="<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/' . $ativos['urlImagem']; ?>" style="width: 70px; height: 70px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Imagem">
                         </td>
                         <td>
                             <div class="acoes" style="display: flex; justify-content: space-around;">
-                                <div class="muda_status" style="margin-right: 20px;"> <!-- Adicionando margem à direita -->
+                                <div class="muda_status" style="margin-right: 20px;">
                                     <?php
                                     if ($ativos['statusAtivo'] == "S") {
                                     ?>
@@ -107,7 +114,7 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <div class="modal fade" id="modalImagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background-color: white; color: white;">
+                <div class="modal-header" style="background-color: #054F77; color: white;">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Imagem do Ativo</h1>
                     <button type="button" onclick="limpar_modal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
