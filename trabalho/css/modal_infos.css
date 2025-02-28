@@ -1,0 +1,80 @@
+    /* Modal Styling */
+    .modal-content {
+        background-color: #bfddf3;
+        border-radius: 15px;
+    }
+
+    h1 {
+        color: white;
+        font-size: 2rem;
+    }
+
+    .modal-header {
+        background-color: #054F77;
+        color: white;
+    }
+
+    .modal-body {
+        font-size: 16px;
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 15px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: gray;
+        box-shadow: 0 0 5px rgba(0, 59, 92, 0.5);
+    }
+
+    .btn {
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-weight: 600;
+    }
+
+    .btn-close:hover {
+        background-color: #bfddf3;
+        border-radius: 50%;
+    }
+
+    .btn-outline-secondary {
+        background-color: gray !important;
+        color: white;
+    }
+
+    .modal-footer button {
+        padding: 12px 25px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    /* Preview Image */
+    .div_previer {
+        display: none;
+    }
+
+    .div_previer img {
+        width: 150px; /* Fixed width */
+        height: 150px; /* Fixed height */
+        object-fit: cover; /* Ensure the image fits within the container without distortion */
+        margin: 0 auto;
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }

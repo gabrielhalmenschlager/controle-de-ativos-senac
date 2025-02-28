@@ -87,30 +87,33 @@ if ($acao == 'alterar_status') {
 
 }
 
-if ($acao == 'get_info') {
-  $sql = "
-    Select          
-      descricaoAtivo,
-      quantidadeAtivo,
-      quantidadeMinAtivo,
-      observacaoAtivo,
-      idMarca,
-      idTipo,
-      urlImagem
-    from
-        ativo
-    where
-        idAtivo= $idAtivo  
-";
+  if($acao == 'get_info'){
+    $sql = "
+        Select 
+            descricaoAtivo,
+            quantidadeAtivo,
+            quantidadeMinAtivo,
+            observacaoAtivo,
+            dataCadastro,
+            urlImagem,
+            a.idMarca,
+            a.idTipo,
+            (SELECT descricaoMarca FROM marca m WHERE m.idMarca = a.idMarca) as marca,
+            (SELECT descricaoTipo FROM tipo t WHERE t.idTipo = a.idTipo) as tipo,  
+            (SELECT nomeUsuario FROM usuario u WHERE u.idUsuario = a.idUsuario) as usuario
+        From
+            ativo a 
+        Where
+            idAtivo = $idAtivo    
+    ";
 
-  $result = mysqli_query($conexao, $sql) or die(false);
-  $ativo = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $result = mysqli_query($conexao, $sql) or die(false);
+    $ativo = $result->fetch_all(MYSQLI_ASSOC);
 
-  echo json_encode($ativo);
+    echo json_encode($ativo);
 
-  exit();
-
-}
+    exit();
+};
 
 if ($acao == 'update') {
   $queryUpdate = "UPDATE 

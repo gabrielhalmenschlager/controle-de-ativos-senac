@@ -21,6 +21,7 @@ $sql = "SELECT
             urlImagem,
             observacaoAtivo,
             (SELECT descricaoMarca FROM marca m WHERE m.idMarca = a.idMarca) AS marca,
+            (SELECT quantidadeUso FROM movimentacao q WHERE q.idAtivo = a.idAtivo and q.statusMov='S') AS quantidadeUso,
             (SELECT descricaoTipo FROM tipo m WHERE m.idTipo = a.idTipo) AS tipo,
             (SELECT usuario FROM usuario m WHERE m.idUsuario = a.idUsuario) AS usuario,
             dataCadastro
@@ -43,7 +44,7 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <th style="background-color: #054F77; color: white;" scope="col">Marca</th>
                     <th style="background-color: #054F77; color: white;" scope="col">Tipo</th>
                     <th style="background-color: #054F77; color: white;" scope="col">Quantidade</th>
-                    <th style="background-color: #054F77; color: white;" scope="col">Quantidade Min</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Quantidade Disp</th>
                     <th style="background-color: #054F77; color: white;" scope="col">Imagem</th>
                     <th style="background-color: #054F77; color: white; text-align:center;" scope="col">Ações</th>
                 </tr>
@@ -51,7 +52,7 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <tbody>
                 <?php
                 foreach ($ativos_bd as $ativos) {
-                    $alertaQuantidade = ($ativos['quantidadeAtivo'] < $ativos['quantidadeMinAtivo']) ? true : false;
+                    $alertaQuantidade = ($ativos['quantidadeAtivo'] - $ativos['quantidadeUso']);
                 ?>
                     <tr>
                         <td><?php echo $ativos['descricaoAtivo']; ?></td>
@@ -59,16 +60,13 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         <td><?php echo $ativos['tipo']; ?></td>
                         <td>
                             <?php echo $ativos['quantidadeAtivo']; ?>
-                            <?php if ($alertaQuantidade) { ?>
+                        </td>
+
+                        <td>
+                            <?php echo $alertaQuantidade; ?>
+                            <?php if ($alertaQuantidade < $ativos['quantidadeMinAtivo']) { ?>
                                 <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Alerta" style="width: 20px; height: 20px; margin-left: 10px;"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Quantidade abaixo do mínimo!">
-                            <?php } ?>
-                        </td>
-                        <td>
-                            <?php echo $ativos['quantidadeMinAtivo']; ?>
-                            <?php if ($alertaQuantidade) { ?>
-                                <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Alerta" style="width: 20px; height: 20px; margin-left: 10px;"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Quantidade mínima acima da quantidade total!">
                             <?php } ?>
                         </td>
                         <td>
@@ -98,6 +96,16 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                 </div>
                                 <div class="remover" onclick="remover('<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover">
                                     <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt="Remover" style="width: 20px; height: 20px;">
+                                </div>
+                                <div class="infos">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/14018/14018718.png" style="width: 20px; height: 20px;"
+                                        data-bs-target="#modalInfos"
+                                        data-bs-toggle="modal"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Ver Informações!"
+                                        onclick="infos('<?php echo $ativos['idAtivo'] ?>')"
+                                        alt="Informações" />
                                 </div>
                             </div>
                         </td>
@@ -214,5 +222,9 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
         </div>
     </footer>
+
+    <?php
+    include_once('modal_infos.php');
+    ?>
 
 </body>
