@@ -13,7 +13,7 @@ include_once('menu_superior.php');
 
 <div class="container mt-5">
     <div class="d-flex justify-content-center">
-        <button type="button" id="btn_modal" onclick="trocaAtributo()" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" id="btn_modal" onclick="limpar_modal()" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Cadastrar Ativos
         </button>
     </div>

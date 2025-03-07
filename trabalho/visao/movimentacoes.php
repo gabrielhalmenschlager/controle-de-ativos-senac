@@ -79,27 +79,44 @@ $movimentacoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
             </table>
         </div>
     </div>
+</div>
 
-    <div class="container mt-5">
-        <h2 class="text-center" style="color: #054F77;">Gráfico das Movimentações Mais Movimentadas</h2>
-        <div style="display: flex; align-items: center; width: 100%; justify-content: center;">
-            <div style="height: 400px; width: 400px;">
-                <canvas id="movimentacaoGrafico" width="200px" height="100px"></canvas>
-            </div>
+<div class="container mt-5">
+    <h2 class="text-center" style="color: #054F77;">Gráfico das Movimentações Mais Movimentadas</h2>
+    <div style="display: flex; align-items: center; width: 100%; justify-content: center;">
+        <div style="height: 400px; width: 400px;">
+            <canvas id="movimentacaoGrafico" width="200px" height="100px"></canvas>
         </div>
     </div>
+</div>
 
-    <footer class="footer bg-light text-center py-3 mt-5">
-        <div class="container">
-            <span style="color: #054F77;">2024 Senac | Todos os direitos reservados</span>
+<footer class="footer bg-light text-center py-1 mt-5" style="background-color: gray;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class=" mt-3 col-6 text-left">
+                <img src="https://cdljundiai.com.br/wp-content/uploads/2020/06/senac.png" alt="Logo Senac" style="width: 120px;">
+            </div>
+            <div class="mt-3 col-6 text-right">
+                <p style="color: white; margin-bottom: 0; font-size: 15px;">Siga-nos nas redes sociais:</p>
+                <a href="https://www.instagram.com/senacsantacruz" target="_blank" class="mr-2">
+                    <img src="https://png.pngtree.com/png-clipart/20180626/ourmid/pngtree-instagram-icon-instagram-logo-png-image_3584852.png" alt="Instagram" style="width: 35px; height: 35px; transition: transform 0.3s;">
+                </a>
+                <a href="https://www.facebook.com/senacsantacruz" target="_blank" class="mr-2">
+                    <img src="https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png" alt="Facebook" style="width: 40px; height: 40px; transition: transform 0.3s;">
+                </a>
+            </div>
         </div>
-    </footer>
+        <div class="mt-2">
+            <span style="color: white; font-size: 15px;">2025 Senac | Todos os direitos reservados</span>
+        </div>
+    </div>
+</footer>
 
-    <?php
+<?php
 
-    include_once('modal_movimentacoes.php');
+include_once('modal_movimentacoes.php');
 
-    $sqlGrafico = "
+$sqlGrafico = "
     SELECT 
         a.descricaoAtivo, 
         SUM(m.quantidadeMov) as totalMovimentado
@@ -111,54 +128,54 @@ $movimentacoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
     LIMIT 10;
 ";
 
-    $resultGrafico = mysqli_query($conexao, $sqlGrafico);
-    $dadosGrafico = [];
-    while ($row = mysqli_fetch_assoc($resultGrafico)) {
-        $dadosGrafico[] = $row;
-    }
+$resultGrafico = mysqli_query($conexao, $sqlGrafico);
+$dadosGrafico = [];
+while ($row = mysqli_fetch_assoc($resultGrafico)) {
+    $dadosGrafico[] = $row;
+}
 
 
-    ?>
+?>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            var labels = <?php echo json_encode(array_column($dadosGrafico, 'descricaoAtivo')); ?>;
-            var data = <?php echo json_encode(array_column($dadosGrafico, 'totalMovimentado')); ?>;
+<script>
+    $(document).ready(function() {
+        var labels = <?php echo json_encode(array_column($dadosGrafico, 'descricaoAtivo')); ?>;
+        var data = <?php echo json_encode(array_column($dadosGrafico, 'totalMovimentado')); ?>;
 
-            var ctx = document.getElementById('movimentacaoGrafico').getContext('2d');
-            var movimentacaoChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Quantidade de Movimentações',
-                        data: data,
-                        backgroundColor: ['#36A2EB', '#FFA500', '#FFCD56', '#4BC0C0', '#9966FF', '#FF6655', '#FF3388', '#FF3355', '#FF0000'],
-                        borderColor: '#fff',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(tooltipItem) {
-                                    return tooltipItem.label + ': ' + tooltipItem.raw + ' movimentações';
-                                }
+        var ctx = document.getElementById('movimentacaoGrafico').getContext('2d');
+        var movimentacaoChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Quantidade de Movimentações',
+                    data: data,
+                    backgroundColor: ['#36A2EB', '#FFA500', '#FFCD56', '#4BC0C0', '#9966FF', '#FF6655', '#FF3388', '#FF3355', '#FF0000'],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + ' movimentações';
                             }
-                        },
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                fontSize: 14,
-                                fontColor: '#054F77'
-                            }
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            fontSize: 14,
+                            fontColor: '#054F77'
                         }
                     }
                 }
-            });
+            }
         });
-    </script>
+    });
+</script>

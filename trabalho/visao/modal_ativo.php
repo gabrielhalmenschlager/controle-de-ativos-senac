@@ -64,7 +64,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="reset" onclick="limpar_modal()" class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Limpar</button>
+                <button type="reset" onclick="limpar_modal()" id="btn_limpaModal" class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Limpar</button>
                 <button type="button" class="btn" style="background-color: #054F77; color: white;" id="salvar_info"><i class="bi bi-save"></i> Salvar</button>
             </div>
         </div>

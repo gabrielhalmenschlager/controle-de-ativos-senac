@@ -53,9 +53,25 @@ foreach ($info_bd as $user) {
         </div>
     </div>
 
-    <footer class="footer mt-5 py-3" style="background-color: #f0f0f0;">
-        <div class="container text-center">
-            <span class="text-muted">2024 Senac | Todos os direitos reservados</span>
+    <footer class="footer bg-light text-center py-1 mt-5" style="background-color: gray;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class=" mt-3 col-6 text-left">
+                    <img src="https://cdljundiai.com.br/wp-content/uploads/2020/06/senac.png" alt="Logo Senac" style="width: 120px;">
+                </div>
+                <div class="mt-3 col-6 text-right">
+                    <p style="color: white; margin-bottom: 0; font-size: 15px;">Siga-nos nas redes sociais:</p>
+                    <a href="https://www.instagram.com/senacsantacruz" target="_blank" class="mr-2">
+                        <img src="https://png.pngtree.com/png-clipart/20180626/ourmid/pngtree-instagram-icon-instagram-logo-png-image_3584852.png" alt="Instagram" style="width: 35px; height: 35px; transition: transform 0.3s;">
+                    </a>
+                    <a href="https://www.facebook.com/senacsantacruz" target="_blank" class="mr-2">
+                        <img src="https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png" alt="Facebook" style="width: 40px; height: 40px; transition: transform 0.3s;">
+                    </a>
+                </div>
+            </div>
+            <div class="mt-2">
+                <span style="color: white; font-size: 15px;">2025 Senac | Todos os direitos reservados</span>
+            </div>
         </div>
     </footer>
 
