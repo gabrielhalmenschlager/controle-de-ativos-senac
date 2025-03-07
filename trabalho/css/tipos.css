@@ -71,11 +71,6 @@ body {
     border-radius: 10px;
 }
 
-.footer {
-    background-color: #bfddf3 !important;
-    border-color: #bfddf3 !important;
-}
-
 /* Responsividade */
 @media (max-width: 767px) {
 

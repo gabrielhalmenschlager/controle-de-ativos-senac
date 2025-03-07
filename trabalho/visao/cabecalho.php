@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?></title>
 
+    <!--Alert personalizado -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
     <!-- Favicon -->
     <link rel="icon" href="https://escoladegoverno.rs.gov.br/wp-content/uploads/2024/02/Logo-Senac.png" type="image/png">
 
@@ -56,15 +61,15 @@
                 dom: 'Bfrtip',
                 buttons: [
                     'copy',
-                    'csv', 
-                    'excel', 
+                    'csv',
+                    'excel',
                     'pdf',
                     'print'
                 ],
             });
 
             $('#carouselExampleIndicators').carousel({
-                interval: 2000  // Intervalo entre as transições de slides (em milissegundos)
+                interval: 2000 // Intervalo entre as transições de slides (em milissegundos)
             });
         });
     </script>

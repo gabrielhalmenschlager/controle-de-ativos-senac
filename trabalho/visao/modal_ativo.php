@@ -1,6 +1,6 @@
 <?php include_once('cabecalho.php'); ?>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modal_info" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content rounded-4 shadow-lg">
             <div class="modal-header" style="background-color: #054F77; color: white;">
@@ -38,6 +38,10 @@
                     <div class="mb-3">
                         <label for="quantidade" class="form-label">Quantidade</label>
                         <input type="number" class="form-control shadow-sm border-light" id="quantidade" name="quantidade" placeholder="Quantidade do Ativo" required>
+                    </div>
+                    <div class="mb-3" id="divObsQuant" style="display: none;">
+                        <label for="observacaoQuantidade" class="form-label">Motivo da Alteração da Quantidade</label>
+                        <input type="text" class="form-control shadow-sm border-light" id="observacaoQuantidade" name="observacaoQuantidade" placeholder="Motivo" required>
                     </div>
                     <div class="mb-3">
                         <label for="quantidadeMin" class="form-label">Quantidade Minima</label>

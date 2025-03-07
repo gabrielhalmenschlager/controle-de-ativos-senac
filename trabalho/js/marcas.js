@@ -5,7 +5,13 @@ $(document).ready(function () {
         let idMarca = $("#idMarca").val();
 
         if(marca == "") {
-            alert ("Campo obrigatório!");
+            Swal.fire({
+                icon: 'warning',
+                title: '<span style="color: #FFA500;">Campo obrigatório!</span>',
+                background: '#F5F5F5',
+                color: '#054F77',
+                confirmButtonColor: '#FFA500'
+            });
             return false;
         }
 
@@ -22,12 +28,18 @@ $(document).ready(function () {
                 acao: acao,
                 marca: marca,
                 idMarca: idMarca
-
             },
 
             success: function (result) {
-                alert(result);
-                location.reload();
+                Swal.fire({
+                    icon: 'success',
+                    title: '<span style="color: #FFA500;">' + result + '</span>',
+                    background: '#F5F5F5',
+                    color: '#054F77',
+                    confirmButtonColor: '#FFA500'
+                }).then(() => {
+                    location.reload();
+                });
             }
         });
     });
@@ -44,8 +56,15 @@ function muda_status(statusMarca, idMarca) {
         },
 
         success: function (result) {
-            alert(result);
-            location.reload();
+            Swal.fire({
+                icon: 'success',
+                title: '<span style="color: #FFA500;">' + result + '</span>',
+                background: '#F5F5F5',
+                color: '#054F77',
+                confirmButtonColor: '#FFA500'
+            }).then(() => {
+                location.reload();
+            });
         }
     });
 }
@@ -77,30 +96,50 @@ function editar(idMarca) {
 }
 
 function remover(idMarca) {
-    if (confirm('Tem certeza de que deseja remover esta marca?')) {
-        $.ajax({
-            type: 'POST',
-            url: "../controle/controle_marca.php", 
-            data: {
-                acao: 'remover',
-                idMarca: idMarca
-            },
-            success: function (result) {
-                alert(result);
-                location.reload();
-            }
-        });
-    }
+    Swal.fire({
+        title: 'Tem certeza?',
+        text: 'Você não poderá reverter isso!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#FFA500',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, remover!',
+        background: '#F5F5F5',
+        color: '#054F77',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: 'POST',
+                url: "../controle/controle_marca.php", 
+                data: {
+                    acao: 'remover',
+                    idMarca: idMarca
+                },
+                success: function (result) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '<span style="color: #FFA500;">' + result + '</span>',
+                        background: '#F5F5F5',
+                        color: '#054F77',
+                        confirmButtonColor: '#FFA500'
+                    }).then(() => {
+                        location.reload();
+                    });
+                }
+            });
+        }
+    });
 }
 
-function limpar_modal() {
+
+function limpar_modal() {a
 
     $("#marca").val('');
     $("#idMarca").val('');
 
 }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        var tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    var tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+});

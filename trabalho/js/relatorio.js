@@ -32,7 +32,6 @@ $(document).ready(function () {
 });
 
 function limpar_modal() {
-
     $("#ativo").prop('disabled', false);
     $("#marca").prop('disabled', false);
     $("#tipo").prop('disabled', false);
@@ -41,6 +40,13 @@ function limpar_modal() {
     $("#usuario").val('');
     $("#tipo_movimentacao").val('');
 
+    Swal.fire({
+        icon: 'success',
+        title: '<span style="color: #FFA500;">Campos limpos com sucesso!</span>',
+        background: '#F5F5F5',  
+        color: '#054F77',        
+        confirmButtonColor: '#FFA500',
+        confirmButtonText: 'OK'
+    });
 }
-
 let table = new DataTable('#myTable');

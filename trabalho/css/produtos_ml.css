@@ -84,10 +84,3 @@ body {
 .product-card .btn:hover {
     background-color: #054F77;
 }
-
-/* Footer */
-.footer {
-    background-color: #f8f9fa;
-    color: #003B5C;
-    border-top: 1px solid #ddd;
-}

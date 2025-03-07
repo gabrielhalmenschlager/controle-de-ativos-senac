@@ -17,6 +17,7 @@ $sql = "SELECT
             descricaoAtivo,
             quantidadeAtivo,
             quantidadeMinAtivo,
+            observacaoQuantidade,
             statusAtivo,
             urlImagem,
             observacaoAtivo,
@@ -73,8 +74,8 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <img onclick="abrirImagem('<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/' . $ativos['urlImagem']; ?>')" src="<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/' . $ativos['urlImagem']; ?>" style="width: 70px; height: 70px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Imagem">
                         </td>
                         <td>
-                            <div class="acoes" style="display: flex; justify-content: space-around;">
-                                <div class="muda_status" style="margin-right: 20px;">
+                            <div class="acoes" style="display: flex; justify-content: space-between; gap: 15px;">
+                                <div class="muda_status">
                                     <?php
                                     if ($ativos['statusAtivo'] == "S") {
                                     ?>
@@ -91,14 +92,14 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                     }
                                     ?>
                                 </div>
-                                <div class="edit" style="margin-right: 20px;" onclick="editar('<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
+                                <div class="edit" onclick="editar('<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
                                     <img src="https://cdn-icons-png.flaticon.com/512/4226/4226577.png" alt="Editar" style="width: 20px; height: 20px;">
                                 </div>
                                 <div class="remover" onclick="remover('<?php echo $ativos['idAtivo']; ?>')" data-bs-toggle="tooltip" data-bs-placement="top" title="Remover">
                                     <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt="Remover" style="width: 20px; height: 20px;">
                                 </div>
-                                <div class="infos">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/14018/14018718.png" style="width: 20px; height: 20px;"
+                                <div class="infos" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver Informações">
+                                    <img src="https://cdn-icons-png.freepik.com/512/7261/7261062.png" style="width: 20px; height: 20px;"
                                         data-bs-target="#modalInfos"
                                         data-bs-toggle="modal"
                                         data-bs-toggle="tooltip"
@@ -109,6 +110,7 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                 </div>
                             </div>
                         </td>
+
                     </tr>
                 <?php
                 }

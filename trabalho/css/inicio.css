@@ -162,7 +162,7 @@ html, body {
 
 /* Rodapé */
 .footer {
-    background-color: #f0f0f0;
+    background-color: gray !important;
     padding: 15px 0;
     text-align: center;
     color: #333;

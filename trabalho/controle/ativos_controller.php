@@ -11,6 +11,7 @@ $marca = $_POST['marca'];
 $tipo = $_POST['tipo'];
 $quantidade = $_POST['quantidade'];
 $quantidadeMin = $_POST['quantidadeMin'];
+$observacaoQuantidade = $_POST['observacaoQuantidade'];
 $observacao = $_POST['observacao'];
 $acao = $_POST['acao'];
 $idAtivo = $_POST['idAtivo'];
@@ -44,6 +45,7 @@ if ($acao == 'inserir') {
                                      descricaoAtivo,
                                      quantidadeAtivo,
                                      quantidadeMinAtivo,
+                                     observacaoQuantidade,
                                      statusAtivo,
                                      observacaoAtivo,
                                      urlImagem,
@@ -55,6 +57,7 @@ if ($acao == 'inserir') {
                                       '" . $ativos . "',
                                       '" . $quantidade . "',
                                       '" . $quantidadeMin . "',
+                                      '" . $observacaoQuantidade . "',
                                       'S',
                                       '" . $observacao . "',
                                       '" . $urlImg . "',
@@ -93,6 +96,7 @@ if ($acao == 'alterar_status') {
             descricaoAtivo,
             quantidadeAtivo,
             quantidadeMinAtivo,
+            observacaoQuantidade,
             observacaoAtivo,
             dataCadastro,
             urlImagem,
@@ -122,6 +126,7 @@ if ($acao == 'update') {
                           descricaoAtivo = '$ativos', 
                           quantidadeAtivo = '$quantidade', 
                           quantidadeMinAtivo = '$quantidadeMin', 
+                          observacaoQuantidade = '$observacaoQuantidade', 
                           idTipo = '$tipo', 
                           idMarca = '$marca', 
                           observacaoAtivo = '$observacao'";
