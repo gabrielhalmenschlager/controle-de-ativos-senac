@@ -178,7 +178,7 @@ function editar(idAtivo) {
             retorno = JSON.parse(result);
             $('#btn_modal').click();
             limpar_modal(true);
-            $('#btn_limpaModal').attr('onclick','limpar_modal(true)')
+            $('#btn_limpaModal').attr('onclick','limpar_modal(true)');
             $("#ativo").val(retorno[0]['descricaoAtivo']);
             $("#marca").val(retorno[0]['idMarca']);
             $("#tipo").val(retorno[0]['idTipo']);

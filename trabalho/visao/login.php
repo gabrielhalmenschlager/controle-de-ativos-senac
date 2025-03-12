@@ -5,12 +5,37 @@ include_once('cabecalho.php');
 session_start();
 
 if (isset($_GET['erro']) && $_GET['erro'] == 'sem_acesso') {
-    echo "<script>alert('Usuário não identificado');</script>";
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'warning',
+                title: '<span style=\"color: #FFA500;\">Usuário não identificado</span>',
+                background: '#F5F5F5',
+                color: '#054F77',
+                confirmButtonColor: '#FFA500',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>";
 }
+
 if (isset($_GET['error_auten']) && $_GET['error_auten'] == 's') {
-    echo "<script>alert('Senha ou Usuário Inválido!');</script>";
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'warning',
+                title: '<span style=\"color: #FFA500;\">Senha ou Usuário Inválido!</span>',
+                background: '#F5F5F5',
+                color: '#054F77',
+                confirmButtonColor: '#FFA500',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>";
 }
 ?>
+
+
 
 <body class="bg-light">
 

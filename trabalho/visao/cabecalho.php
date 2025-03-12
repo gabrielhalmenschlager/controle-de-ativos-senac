@@ -11,6 +11,12 @@
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.2/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.2/dist/sweetalert2.min.js"></script>
+
     <!-- Favicon -->
     <link rel="icon" href="https://escoladegoverno.rs.gov.br/wp-content/uploads/2024/02/Logo-Senac.png" type="image/png">
 
@@ -73,5 +79,5 @@
             });
         });
     </script>
-    
+
 </head>
