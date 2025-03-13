@@ -84,6 +84,71 @@ include_once('menu_superior.php');
         ?>
     </div>
 
+</body>
+
+    <?php
+    $sqlGraficoTipos = "
+        SELECT 
+            statusTipo,
+            COUNT(*) as quantidade
+        FROM tipo
+        WHERE statusTipo IN ('S', 'N')  -- Somente ativos e inativos
+        GROUP BY statusTipo;
+    ";
+
+    $resultGraficoTipos = mysqli_query($conexao, $sqlGraficoTipos);
+    $dadosGraficoTipos = ['S' => 0, 'N' => 0];
+
+    while ($row = mysqli_fetch_assoc($resultGraficoTipos)) {
+        $dadosGraficoTipos[$row['statusTipo']] = $row['quantidade'];
+    }
+    $ativos = $dadosGraficoTipos['S'];
+    $inativos = $dadosGraficoTipos['N'];
+    ?>
+
+    <div class="container mt-5">
+        <h2 class="text-center" style="color: #054F77;">Gráfico de Tipos Ativos e Inativos</h2>
+        <div style="display: flex; justify-content: center;">
+            <div style="height: 400px; width: 400px;">
+                <canvas id="graficoTipos" width="200px" height="100px"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        $(document).ready(function() {
+            var labels = ['Ativos', 'Inativos'];
+            var data = [
+                <?php echo $ativos; ?>,
+                <?php echo $inativos; ?>
+            ];
+
+            var ctx = document.getElementById('graficoTipos').getContext('2d');
+            var graficoTipos = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['#4CAF50', '#FF6655'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                fontColor: '#054F77'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
     <footer class="footer bg-light text-center py-1 mt-5" style="background-color: gray;">
         <div class="container">
             <div class="row align-items-center">
@@ -104,6 +169,4 @@ include_once('menu_superior.php');
                 <span style="color: white; font-size: 15px;">2025 Senac | Todos os direitos reservados</span>
             </div>
         </div>
-    </footer>   
-
-</body>
+    </footer>

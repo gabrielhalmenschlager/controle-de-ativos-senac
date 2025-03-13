@@ -84,6 +84,69 @@ include_once('menu_superior.php');
         </div>
     </div>
 
+    <?php
+    $sqlGraficoMarcas = "
+    SELECT 
+        statusMarca,
+        COUNT(*) as quantidade
+    FROM marca
+    WHERE statusMarca IN ('S', 'N')
+    GROUP BY statusMarca;
+";
+
+    $resultGraficoMarcas = mysqli_query($conexao, $sqlGraficoMarcas);
+    $dadosGraficoMarcas = ['S' => 0, 'N' => 0];
+
+    while ($row = mysqli_fetch_assoc($resultGraficoMarcas)) {
+        $dadosGraficoMarcas[$row['statusMarca']] = $row['quantidade'];
+    }
+    $ativos = $dadosGraficoMarcas['S'];
+    $inativos = $dadosGraficoMarcas['N'];
+    ?>
+
+    <div class="container mt-5">
+        <h2 class="text-center" style="color: #054F77;">Gráfico de Marcas Ativas e Inativas</h2>
+        <div style="display: flex; justify-content: center;">
+            <div style="height: 400px; width: 400px;">
+                <canvas id="graficoMarcas" width="200px" height="100px"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        $(document).ready(function() {
+            var labels = ['Ativos', 'Inativos'];
+            var data = [
+                <?php echo $ativos; ?>,
+                <?php echo $inativos; ?>
+            ];
+
+            var ctx = document.getElementById('graficoMarcas').getContext('2d');
+            var graficoMarcas = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['#4CAF50', '#FF6655'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                fontColor: '#054F77'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
     <footer class="footer bg-light text-center py-1 mt-5" style="background-color: gray;">
         <div class="container">
             <div class="row align-items-center">
