@@ -50,6 +50,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="opcoes.php">Opções
+                        <i class="bi bi-list-ul"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" id="sair" href="sair.php">
                         Sair
                         <img src="https://cdn-icons-png.freepik.com/256/16697/16697253.png?semt=ais_hybrid" alt="Ícone de Sair" style="width: 18px; height: 18px; margin-left: 8px;">

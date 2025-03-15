@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="../css/tipos.css">
     <link rel="stylesheet" href="../css/produtos_ml.css">
     <link rel="stylesheet" href="../css/movimentacoes.css">
+    <link rel="stylesheet" href="../css/opcoes.css">
 
     <script>
         $(document).ready(function() {
