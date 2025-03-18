@@ -16,7 +16,6 @@ include_once('menu_superior.php');
 
     <div class="container mt-5">
         <div class="row">
-            <!-- Card de Ativos -->
             <div class="col-md-3 mb-4">
                 <div class="card text-center">
                     <i class="fas fa-cogs card-icon"></i>
@@ -33,7 +32,6 @@ include_once('menu_superior.php');
                 </div>
             </div>
 
-            <!-- Card de Usuários -->
             <div class="col-md-3 mb-4">
                 <div class="card text-center">
                     <i class="fas fa-users card-icon"></i>
@@ -49,7 +47,6 @@ include_once('menu_superior.php');
                 </div>
             </div>
 
-            <!-- Card de Movimentações -->
             <div class="col-md-3 mb-4">
                 <div class="card text-center">
                     <i class="fas fa-exchange-alt card-icon"></i>
@@ -65,7 +62,6 @@ include_once('menu_superior.php');
                 </div>
             </div>
 
-            <!-- Card de Produtos -->
             <div class="col-md-3 mb-4">
                 <div class="card text-center">
                     <i class="fas fa-boxes card-icon"></i>
@@ -174,7 +170,7 @@ include_once('menu_superior.php');
         <div class="container">
             <div class="row align-items-center">
                 <div class=" mt-3 col-6 text-left">
-                    <img src="https://cdljundiai.com.br/wp-content/uploads/2020/06/senac.png" alt="Logo Senac" style="width: 120px;">
+                <img src="https://static.wixstatic.com/media/52bc07_3a4a9b542c644d9385b5366e7995eecf~mv2.png/v1/fill/w_500,h_292,al_c,lg_1,q_85,enc_avif,quality_auto/senac%20branco.png" alt="Logo Senac" style="width: 120px;">
                 </div>
                 <div class="mt-3 col-6 text-right">
                     <p style="color: white; margin-bottom: 0; font-size: 15px;">Siga-nos nas redes sociais:</p>
