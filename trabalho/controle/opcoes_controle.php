@@ -28,7 +28,7 @@ if ($acao == 'insert'){
     $retorno = $classeOpcoes->get_info($conexao, $idOpcao);
 
 } else if ($acao == 'update') {
-    $retorno = $classeOpcoes->get_info($conexao, $idOpcao);
+    $retorno = $classeOpcoes->update($conexao, $idOpcao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario);
     
 } else if ($acao == 'deletar_opcao') {
     $retorno = $classeOpcoes->deletar_opcao($conexao, $idOpcao);

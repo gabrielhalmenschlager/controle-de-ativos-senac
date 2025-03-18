@@ -62,8 +62,8 @@ function muda_status(statusOpcao, idOpcao) {
         url: "../controle/opcoes_controle.php",
         data: {
             acao: 'alterar_status',
-            status: statusOpcao,
-            idMarca: idOpcao
+            statusOpcao: statusOpcao,
+            idOpcao: idOpcao
         },
 
         success: function (result) {
@@ -143,4 +143,13 @@ function remover(idOpcao) {
             });
         }
     });
+}
+
+function limpar_modal() {a
+
+    $("#idOpcao").val('');
+    $("#descricaoOpcao").val('');
+    $("#nivelOpcao").val('');
+    $("#urlOpcao").val('');
+
 }

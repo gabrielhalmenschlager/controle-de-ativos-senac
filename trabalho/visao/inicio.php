@@ -170,7 +170,7 @@ include_once('menu_superior.php');
         </div>
     </div>
 
-    <footer class="footer bg-light text-center py-1 mt-5" style="background-color: gray;">
+    <footer class="footer bg-light text-center py-1 mt-5" style="background-color: white;">
         <div class="container">
             <div class="row align-items-center">
                 <div class=" mt-3 col-6 text-left">

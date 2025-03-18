@@ -87,7 +87,7 @@
     }
 
     .navbar-nav .nav-link {
-        color: white !important;
+        color: #054F77 !important;
         font-weight: 600;
         font-size: 16px;
         padding: 12px 20px;
@@ -130,7 +130,7 @@
     }
 
     .sub-menu .dropdown-item {
-        color: white;
+        color: #054F77;
         padding: 12px 20px;
         font-size: 15px;
         transition: background-color 0.3s ease;

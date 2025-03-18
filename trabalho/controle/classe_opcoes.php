@@ -69,14 +69,15 @@ class opcoes {
         return $resultado;
     }
 
-    public function update($conexao, $idOpcao, $descricaoOpcao, $nivelOpcao, $urlOpcao) {
+    public function update($conexao, $idOpcao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario) {
         $sql = "
             UPDATE 
                 opcoes_menu 
             SET 
                 descricaoOpcao = '$descricaoOpcao', 
                 nivelOpcao = '$nivelOpcao', 
-                urlOpcao = '$urlOpcao'
+                urlOpcao = '$urlOpcao',
+                idUsuario = '$idUsuario'
             WHERE 
                 idOpcao = $idOpcao
         ";

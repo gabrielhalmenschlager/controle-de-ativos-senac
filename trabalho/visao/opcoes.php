@@ -25,7 +25,7 @@ include_once('menu_superior.php');
 </div>
 
 <div class="container mt-5">
-            <h1 class="mb-4 text-center" style="color: #054F77;">Lista de Opceos</h1>
+            <h1 class="mb-4 text-center" style="color: #054F77;">Lista de Opções</h1>
 
             <table class="table table-striped table-bordered table-hover" id="tabela-personalizada">
                 <thead>
