@@ -18,15 +18,16 @@ include_once('menu_superior.php');
         <div class="row">
             <div class="col-md-3 mb-4">
                 <div class="card text-center">
-                    <i class="fas fa-cogs card-icon"></i>
+                    <i class="fas fa-cogs card-icon"></i>   
                     <img src="https://cdn-icons-png.flaticon.com/512/3534/3534139.png" alt="Icone de Cadastros">
                     <div class="card-body">
                         <h5 class="card-title">Cadastros</h5>
-                        <p class="card-text">Gerencie e cadastre os ativos, tipos e marcas disponíveis no sistema.</p>
+                        <p class="card-text">Gerencie e cadastre os ativos, tipos, marcas e opções disponíveis no sistema.</p>
                         <div class="card-footer">
                             <a href="ativos.php" class="btn btn-primary">Cadastrar Ativo</a>
                             <a href="marcas.php" class="btn btn-primary">Cadastrar Marca</a>
                             <a href="tipos.php" class="btn btn-primary">Cadastrar Tipo</a>
+                            <a href="opcoes.php" class="btn btn-primary">Cadastrar Opções</a>
                         </div>
                     </div>
                 </div>

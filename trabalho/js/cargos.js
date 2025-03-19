@@ -1,10 +1,14 @@
 $(document).ready(function () {
     $(".salvar").click(function () {
 
-        let marca = $("#marca").val();
-        let idMarca = $("#idMarca").val();
+        let idCargo = $("#idCargo").val();
+        let descricaoCargo = $("#descricaoCargo").val();
+        let statusCargo = $("#statusCargo").val();
 
-        if(marca == "") {
+        $(".form-control, .form-select").removeClass("borda-vermelha");
+        $("#imgAtivo").removeClass("borda-vermelha");
+
+        if (descricaoCargo == "") {
             Swal.fire({
                 icon: 'warning',
                 title: '<span style="color: #FFA500;">Campo obrigatório!</span>',
@@ -12,22 +16,25 @@ $(document).ready(function () {
                 color: '#054F77',
                 confirmButtonColor: '#FFA500'
             });
+
+            if (descricaoCargo == "") $("#descricaoCargo").addClass("borda-vermelha");
             return false;
         }
 
-        if (idMarca == "") {
-            acao = 'inserir';
+        if (idCargo == "") {
+            acao = 'insert';
         } else {
             acao = 'update';
         }
 
         $.ajax({
             type: 'POST',
-            url: "../controle/controle_marca.php",
+            url: "../controle/cargos_controle.php",
             data: {
                 acao: acao,
-                marca: marca,
-                idMarca: idMarca
+                idCargo: idCargo,
+                descricaoCargo: descricaoCargo,
+                statusCargo: statusCargo
             },
 
             success: function (result) {
@@ -45,14 +52,14 @@ $(document).ready(function () {
     });
 });
 
-function muda_status(statusMarca, idMarca) {
+function muda_status(statusCargo, idCargo) {
     $.ajax({
         type: 'POST',
-        url: "../controle/controle_marca.php",
+        url: "../controle/cargos_controle.php",
         data: {
             acao: 'alterar_status',
-            status: statusMarca,
-            idMarca: idMarca
+            statusCargo: statusCargo,
+            idCargo: idCargo
         },
 
         success: function (result) {
@@ -69,33 +76,33 @@ function muda_status(statusMarca, idMarca) {
     });
 }
 
-function editar(idMarca) {
+function editar(idCargo) {
 
-    $('#idMarca').val(idMarca);
+    $('#idCargo').val(idCargo);
 
     $.ajax({
         type: 'POST',
-        url: "../controle/controle_marca.php",
+        url: "../controle/cargos_controle.php",
         data: {
             acao: 'get_info',
-            idMarca: idMarca
+            idCargo: idCargo
         },
 
         success: function (result) {
 
-            retorno = JSON.parse(result)
+            retorno = JSON.parse(result);
 
             $('#btn_modal').click();
-            $("#marca").val(retorno[0]['descricaoMarca']);
-            $("#idMarca").val(retorno[0]['idMarca']);
+            $("#idCargo").val(retorno[0]['idCargo']);
+            $("#descricaoCargo").val(retorno[0]['descricaoCargo']);
 
-            console.log(retorno)
+            console.log(retorno);
         }
     });
 
 }
 
-function remover(idMarca) {
+function remover(idCargo) {
     Swal.fire({
         title: 'Tem certeza?',
         text: 'Você não poderá reverter isso!',
@@ -110,10 +117,10 @@ function remover(idMarca) {
         if (result.isConfirmed) {
             $.ajax({
                 type: 'POST',
-                url: "../controle/controle_marca.php", 
+                url: "../controle/cargos_controle.php",
                 data: {
-                    acao: 'remover',
-                    idMarca: idMarca
+                    acao: 'deletar_cargo',
+                    idCargo: idCargo
                 },
                 success: function (result) {
                     Swal.fire({
@@ -121,7 +128,8 @@ function remover(idMarca) {
                         title: '<span style="color: #FFA500;">' + result + '</span>',
                         background: '#F5F5F5',
                         color: '#054F77',
-                        confirmButtonColor: '#FFA500'
+                        confirmButtonColor: '#FFA500',
+                        confirmButtonText: 'OK'
                     }).then(() => {
                         location.reload();
                     });
@@ -131,14 +139,7 @@ function remover(idMarca) {
     });
 }
 
-function limpar_modal() {a
-
-    $("#marca").val('');
-    $("#idMarca").val('');
-
+function limpar_modal() {
+    $("#idCargo").val('');
+    $("#descricaoCargo").val('');
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    var tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-});

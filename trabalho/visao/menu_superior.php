@@ -21,6 +21,7 @@
                     <ul class="dropdown-menu sub-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="cadastrar_usuario.php">Cadastrar Usuários</a></li>
                         <li><a class="dropdown-item" href="listar_usuario.php">Lista de Usuários</a></li>
+                        <li><a class="dropdown-item" href="cargos.php">Cargos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown ativos-menu">
