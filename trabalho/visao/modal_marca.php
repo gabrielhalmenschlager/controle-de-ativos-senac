@@ -12,9 +12,12 @@ include_once('cabecalho.php');
             <div class="modal-body">
                 <form id="form-cadastrar-marca">
                     <div class="mb-3">
-                        <label class="form-label">Descrição da Marca</label>
+                        <label class="form-label">Descrição da Marca</label><span style="color: red;"> * </span>
                         <input type="text" class="form-control" id="marca" name="marca" placeholder="Digite a descrição da marca" required>
                         <input type="hidden" class="form-control" id="idMarca" name="idMarca">
+                    </div>
+                    <div class="mb-3">
+                        <span style="color: red;"> * Campos Obrigatórios </span>
                     </div>
                     <div class="modal-footer">
                         <button type="reset" onclick="limpar_modal()" class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Limpar</button>

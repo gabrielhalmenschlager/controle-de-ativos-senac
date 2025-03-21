@@ -16,6 +16,9 @@ include_once('cabecalho.php');
                         <input type="text" class="form-control" id="descricaoCargo" name="descricaoCargo" placeholder="Digite a descrição da opção" required>
                         <input type="hidden" class="form-control" id="idCargo" name="idCargo">
                     </div>
+                    <div class="mb-3">
+                        <span style="color: red;"> * Campos Obrigatórios </span>
+                    </div>
                     <div class="modal-footer">
                         <button type="reset" onclick="limpar_modal()" class="btn btn-outline-secondary"><i class="bi bi-arrow-clockwise"></i> Limpar</button>
                         <button type="button" class="btn salvar" style="background-color: #054F77; color: white;" id="salvar"><i class="bi bi-save"></i> Salvar</button>

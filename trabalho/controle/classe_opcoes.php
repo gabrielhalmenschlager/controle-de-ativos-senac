@@ -1,8 +1,10 @@
-<?php 
+<?php
 
-class opcoes {
+class opcoes
+{
 
-    public function insert($conexao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario, $idSuperior) {    
+    public function insert($conexao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario, $idSuperior)
+    {
         $query = "INSERT INTO opcoes_menu (
             descricaoOpcao,
             nivelOpcao,
@@ -20,9 +22,9 @@ class opcoes {
             '" . $idSuperior . "',
             NOW()
         )";
-    
+
         $result = mysqli_query($conexao, $query);
-        
+
         if ($result) {
             $resultado = "Opção inserida com sucesso!";
         } else {
@@ -30,9 +32,10 @@ class opcoes {
         }
         return $resultado;
     }
-    
 
-    public function alterar_status($conexao, $statusOpcao, $idOpcao) {
+
+    public function alterar_status($conexao, $statusOpcao, $idOpcao)
+    {
 
         $sql = "UPDATE opcoes_menu SET statusOpcao = '$statusOpcao' WHERE idOpcao = $idOpcao";
 
@@ -44,10 +47,10 @@ class opcoes {
             $resultado = "Erro ao alterar status!";
         }
         return $resultado;
+    }
 
-      }
-
-      public function get_info($conexao, $idOpcao) {
+    public function get_info($conexao, $idOpcao)
+    {
         $sql = "
             SELECT 
                 idOpcao,
@@ -71,7 +74,8 @@ class opcoes {
         return $resultado;
     }
 
-    public function update($conexao, $idOpcao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario) {
+    public function update($conexao, $idOpcao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario)
+    {
         $sql = "
             UPDATE 
                 opcoes_menu 
@@ -84,20 +88,21 @@ class opcoes {
                 idOpcao = $idOpcao
         ";
 
-    $result = mysqli_query($conexao, $sql);
+        $result = mysqli_query($conexao, $sql);
 
-    if ($result) {
-        echo 'Informações alteradas com sucesso!';
-    } else {
-        echo 'Erro ao alterar informações!';
+        if ($result) {
+            echo 'Informações alteradas com sucesso!';
+        } else {
+            echo 'Erro ao alterar informações!';
+        }
     }
-    }
-    
-    public function deletar_opcao($conexao, $idOpcao) {
+
+    public function deletar_opcao($conexao, $idOpcao)
+    {
         $sql = "DELETE FROM opcoes_menu WHERE idOpcao = $idOpcao";
-        
+
         $resultRemov = mysqli_query($conexao, $sql);
-        
+
         if ($resultRemov) {
             $resultado = 'Opção removida com sucesso!';
         } else {
@@ -106,15 +111,14 @@ class opcoes {
         return $resultado;
     }
 
-    public function get_opcoes_superior($conexao, $nivelOpcao) {
+    public function get_opcoes_superior($conexao, $nivelOpcao)
+    {
 
-            $sql = "SELECT idOpcao, descricaoOpcao FROM opcoes_menu WHERE nivelOpcao = $nivelOpcao AND statusOpcao = 'S'";
-    
+        $sql = "SELECT idOpcao, descricaoOpcao FROM opcoes_menu WHERE nivelOpcao = $nivelOpcao AND statusOpcao = 'S'";
+
         $result = mysqli_query($conexao, $sql);
         $opcoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    
+
         return json_encode($opcoes);
     }
-
 }
-?>

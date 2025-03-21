@@ -76,6 +76,7 @@ function muda_status(statusCargo, idCargo) {
     });
 }
 
+
 function editar(idCargo) {
 
     $('#idCargo').val(idCargo);
@@ -143,3 +144,14 @@ function limpar_modal() {
     $("#idCargo").val('');
     $("#descricaoCargo").val('');
 }
+
+function limpar_modal() {
+    $("#tipo").val('');
+    $("#idTipo").val('');
+    $(".form-control, .form-select").removeClass("borda-vermelha");
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    var tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+});

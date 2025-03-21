@@ -126,7 +126,7 @@ include_once('menu_superior.php');
 
             var ctx = document.getElementById('graficoTipos').getContext('2d');
             var graficoTipos = new Chart(ctx, {
-                type: 'bar',
+                type: 'doughnut',
                 data: {
                     labels: labels,
                     datasets: [{

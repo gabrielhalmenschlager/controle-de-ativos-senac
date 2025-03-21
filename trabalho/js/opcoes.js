@@ -195,3 +195,14 @@ function limpar_modal() {
     $("#urlOpcao").val('');
 
 }
+
+function limpar_modal() {
+    $("#tipo").val('');
+    $("#idTipo").val('');
+    $(".form-control, .form-select").removeClass("borda-vermelha");
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    var tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+});

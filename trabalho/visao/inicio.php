@@ -27,7 +27,6 @@ include_once('menu_superior.php');
                             <a href="ativos.php" class="btn btn-primary">Cadastrar Ativo</a>
                             <a href="marcas.php" class="btn btn-primary">Cadastrar Marca</a>
                             <a href="tipos.php" class="btn btn-primary">Cadastrar Tipo</a>
-                            <a href="opcoes.php" class="btn btn-primary">Cadastrar Opções</a>
                         </div>
                     </div>
                 </div>
@@ -72,6 +71,20 @@ include_once('menu_superior.php');
                         <p class="card-text">Gerencie os produtos disponíveis e sua disponibilidade.</p>
                         <div class="card-footer">
                             <a href="produtos_ml.php" class="btn btn-primary">Ver Produtos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card text-center">
+                    <i class="fas fa-cogs card-icon"></i>   
+                    <img src="https://cdn-icons-png.freepik.com/256/5759/5759337.png?semt=ais_hybrid" alt="Icone de Admin">
+                    <div class="card-body">
+                        <h5 class="card-title">Admin</h5>
+                        <p class="card-text">Gerencie cargos e opcçoes disponíveis no sistema.</p>
+                        <div class="card-footer">
+                            <a href="opcoes.php" class="btn btn-primary">Cadastrar Opções</a>
+                            <a href="cargos.php" class="btn btn-primary">Cadastrar Cargos</a>
                         </div>
                     </div>
                 </div>
