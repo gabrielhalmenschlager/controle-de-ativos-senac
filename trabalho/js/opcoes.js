@@ -1,7 +1,47 @@
 $(document).ready(function () {
+    $("#nivelOpcao").change(function () {
+
+        let nivelOpcao = $(this).val() - 1;
+
+        console.log(nivelOpcao);
+
+        if (nivelOpcao == 0 || nivelOpcao == -1 || nivelOpcao == '') {
+            $("#campoSuperior").hide();
+            return;
+
+        } else {
+            $("#campoSuperior").show();
+            carregarOpcoesSuperior(nivelOpcao);
+        }
+    });
+
+    function carregarOpcoesSuperior(nivel) {
+        $.ajax({
+            type: 'POST',
+            url: "../controle/opcoes_controle.php",
+            data: { acao: 'get_opcoes_superior', nivelOpcao: nivel },
+
+            success: function (result) {
+
+                let options = JSON.parse(result);
+                let select = $("#idSuperior");
+                select.empty();
+
+                select.append('<option selected value="">Selecione</option>');
+
+                options.forEach(function (opcao) {
+                    select.append('<option value="' + opcao.idOpcao + '">' + opcao.descricaoOpcao + '</option>');
+                });
+            }
+        });
+    }
+});
+
+$(document).ready(function () {
     $(".salvar").click(function () {
 
         let idOpcao = $("#idOpcao").val();
+        let idSuperior = $("#idSuperior").val();
         let descricaoOpcao = $("#descricaoOpcao").val();
         let nivelOpcao = $("#nivelOpcao").val();
         let urlOpcao = $("#urlOpcao").val();
@@ -10,7 +50,7 @@ $(document).ready(function () {
         $(".form-control, .form-select").removeClass("borda-vermelha");
         $("#imgAtivo").removeClass("borda-vermelha");
 
-        if(descricaoOpcao == "" || nivelOpcao == "") {
+        if (descricaoOpcao == "" || nivelOpcao == "") {
             Swal.fire({
                 icon: 'warning',
                 title: '<span style="color: #FFA500;">Campo obrigatório!</span>',
@@ -36,6 +76,7 @@ $(document).ready(function () {
             data: {
                 acao: acao,
                 idOpcao: idOpcao,
+                idSuperior: idSuperior,
                 descricaoOpcao: descricaoOpcao,
                 nivelOpcao: nivelOpcao,
                 urlOpcao: urlOpcao
@@ -145,11 +186,12 @@ function remover(idOpcao) {
     });
 }
 
-function limpar_modal() {a
+function limpar_modal() {
 
     $("#idOpcao").val('');
     $("#descricaoOpcao").val('');
     $("#nivelOpcao").val('');
+    $("#urlOpcao").val('');
     $("#urlOpcao").val('');
 
 }

@@ -62,7 +62,7 @@ include_once('cabecalho.php');
 
 <style>
   .modal-content {
-    background-color: #bfddf3;
+    background-color: #d3d3d3;
     border-radius: 15px;
   }
 

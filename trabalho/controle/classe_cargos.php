@@ -26,7 +26,9 @@ class cargos {
     }
 
     public function alterar_status($conexao, $statusCargo, $idCargo) {
+
         $sql = "UPDATE cargos SET statusCargo = '$statusCargo' WHERE idCargo = $idCargo";
+        
         $result = mysqli_query($conexao, $sql);
 
         if ($result) {
@@ -90,5 +92,27 @@ class cargos {
         }
         return $resultado;
     }
+
+    public function buscar_opcoes_por_nivel($conexao, $nivelOpcao) {
+        $sql = "
+            SELECT 
+                idOpcao,
+                descricaoOpcao
+            FROM 
+                opcoes_menu
+            WHERE 
+                nivelOpcao = '$nivelOpcao' AND
+                statusOpcao = 'S'
+        ";
+    
+        $result = mysqli_query($conexao, $sql);
+        $opcoes = $result->fetch_all(MYSQLI_ASSOC);
+    
+        return json_encode($opcoes);
+    }
+    
+
 }
+
+
 ?>

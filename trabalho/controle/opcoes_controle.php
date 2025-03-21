@@ -10,6 +10,7 @@ include_once("../modelo/conexao.php");
 $acao = $_POST['acao'];
 
 $idOpcao = $_POST['idOpcao'];
+$idSuperior = $_POST['idSuperior'];
 $descricaoOpcao = $_POST['descricaoOpcao'];
 $nivelOpcao = $_POST['nivelOpcao'];
 $urlOpcao = $_POST['urlOpcao'];
@@ -19,7 +20,7 @@ $idUsuario = $_SESSION['id_user'];
 $classeOpcoes = new opcoes(); 
 
 if ($acao == 'insert'){
-    $retorno = $classeOpcoes->insert($conexao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario);
+    $retorno = $classeOpcoes->insert($conexao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario , $idSuperior);
 
 } else if ($acao == 'alterar_status') {
     $retorno = $classeOpcoes->alterar_status($conexao, $statusOpcao, $idOpcao);
@@ -32,7 +33,11 @@ if ($acao == 'insert'){
     
 } else if ($acao == 'deletar_opcao') {
     $retorno = $classeOpcoes->deletar_opcao($conexao, $idOpcao);
+
+} else if ($acao == 'get_opcoes_superior') {
+    $retorno = $classeOpcoes->get_opcoes_superior($conexao, $nivelOpcao);
 }
+
 echo $retorno;
 
 ?>

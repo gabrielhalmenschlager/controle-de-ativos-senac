@@ -18,7 +18,20 @@ include_once('cabecalho.php');
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nível</label><span style="color: red;"> * </span>
-                        <input type="number" class="form-control" id="nivelOpcao" name="nivelOpcao" placeholder="Digite o nível" required>
+                        <select class="form-select shadow-sm border-light" id="nivelOpcao" name="nivelOpcao" required>
+                            <option value="">Selecione</option>
+                            <?php
+                            foreach ($niveis as $nivel) {
+                                echo '<option value="' . $nivel['idNivel'] . '">' . $nivel['descricaoNivel'] . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="campoSuperior" style="display: none;">
+                        <label class="form-label">Opções Superior</label><span style="color: red;"> * </span>
+                        <select class="form-select shadow-sm border-light" id="idSuperior" name="idSuperior">
+                            <option selected value="">Selecione</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">URL</label>
@@ -36,7 +49,7 @@ include_once('cabecalho.php');
 
 <style>
     .modal-content {
-        background-color: #bfddf3;
+        background-color: #d3d3d3;
         border-radius: 15px;
     }
 

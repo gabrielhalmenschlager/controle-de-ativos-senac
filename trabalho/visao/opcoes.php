@@ -7,6 +7,7 @@ $title = "Opções";
 include_once('cabecalho.php');
 
 $opcoes = busca_info_bd($conexao, 'opcoes_menu');
+$niveis = busca_info_bd($conexao, 'nivel_acesso');
 
 include_once('menu_superior.php');
 

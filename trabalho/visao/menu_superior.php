@@ -21,7 +21,6 @@
                     <ul class="dropdown-menu sub-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="cadastrar_usuario.php">Cadastrar Usuários</a></li>
                         <li><a class="dropdown-item" href="listar_usuario.php">Lista de Usuários</a></li>
-                        <li><a class="dropdown-item" href="cargos.php">Cargos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown ativos-menu">
@@ -50,10 +49,15 @@
                         <i class="bi bi-cart-plus"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="opcoes.php">Opções
-                        <i class="bi bi-list-ul"></i>
+                <li class="nav-item dropdown ativos-menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAtivos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Admin
+                        <i class="bi bi-gear"></i>
                     </a>
+                    <ul class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownAtivos">
+                        <li><a class="dropdown-item" href="opcoes.php">Opções</a></li>
+                        <li><a class="dropdown-item" href="cargos.php">Cargos</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="sair" href="sair.php">

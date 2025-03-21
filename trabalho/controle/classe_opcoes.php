@@ -2,14 +2,14 @@
 
 class opcoes {
 
-    public function insert($conexao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario) {    
-        
-        $query = " INSERT INTO opcoes_menu (
+    public function insert($conexao, $descricaoOpcao, $nivelOpcao, $urlOpcao, $idUsuario, $idSuperior) {    
+        $query = "INSERT INTO opcoes_menu (
             descricaoOpcao,
             nivelOpcao,
             urlOpcao,
             statusOpcao,
             idUsuario,
+            idSuperior,
             dataCadastroOpcao
         ) VALUES (
             '" . $descricaoOpcao . "',
@@ -17,11 +17,12 @@ class opcoes {
             '" . $urlOpcao . "',
             'S',
             '" . $idUsuario . "',
+            '" . $idSuperior . "',
             NOW()
         )";
-
+    
         $result = mysqli_query($conexao, $query);
-
+        
         if ($result) {
             $resultado = "Opção inserida com sucesso!";
         } else {
@@ -29,6 +30,7 @@ class opcoes {
         }
         return $resultado;
     }
+    
 
     public function alterar_status($conexao, $statusOpcao, $idOpcao) {
 
@@ -102,6 +104,16 @@ class opcoes {
             $resultado = 'Erro ao remover opção!';
         }
         return $resultado;
+    }
+
+    public function get_opcoes_superior($conexao, $nivelOpcao) {
+
+            $sql = "SELECT idOpcao, descricaoOpcao FROM opcoes_menu WHERE nivelOpcao = $nivelOpcao AND statusOpcao = 'S'";
+    
+        $result = mysqli_query($conexao, $sql);
+        $opcoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    
+        return json_encode($opcoes);
     }
 
 }
