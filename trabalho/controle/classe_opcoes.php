@@ -54,6 +54,7 @@ class opcoes
         $sql = "
             SELECT 
                 idOpcao,
+                idSuperior,
                 descricaoOpcao,
                 nivelOpcao,
                 urlOpcao,
@@ -111,14 +112,24 @@ class opcoes
         return $resultado;
     }
 
-    public function get_opcoes_superior($conexao, $nivelOpcao)
+    public function busca_superior($conexao, $nivel)
     {
 
-        $sql = "SELECT idOpcao, descricaoOpcao FROM opcoes_menu WHERE nivelOpcao = $nivelOpcao AND statusOpcao = 'S'";
+        $sql = "
+    SELECT 
+        idOpcao,
+        descricaoOpcao
+    FROM
+        opcoes_menu 
+    WHERE
+        nivelOpcao = $nivel
+    ";
 
-        $result = mysqli_query($conexao, $sql);
-        $opcoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $result = mysqli_query($conexao, $sql) or die(false);
+        $opcao = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-        return json_encode($opcoes);
+        $resultado = json_encode($opcao);
+
+        return $resultado;
     }
 }

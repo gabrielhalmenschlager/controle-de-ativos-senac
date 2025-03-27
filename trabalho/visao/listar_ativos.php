@@ -53,7 +53,7 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <tbody>
                 <?php
                 foreach ($ativos_bd as $ativos) {
-                    $alertaQuantidade = ($ativos['quantidadeAtivo'] - $ativos['quantidadeUso']);
+                    $quantidadeDisp = ($ativos['quantidadeAtivo'] - $ativos['quantidadeUso']);
                 ?>
                     <tr>
                         <td><?php echo $ativos['descricaoAtivo']; ?></td>
@@ -64,8 +64,8 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         </td>
 
                         <td>
-                            <?php echo $alertaQuantidade; ?>
-                            <?php if ($alertaQuantidade < $ativos['quantidadeMinAtivo']) { ?>
+                            <?php echo $quantidadeDisp; ?>
+                            <?php if ($quantidadeDisp < $ativos['quantidadeMinAtivo']) { ?>
                                 <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Alerta" style="width: 20px; height: 20px; margin-left: 10px;"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Quantidade abaixo do mínimo!">
                             <?php } ?>

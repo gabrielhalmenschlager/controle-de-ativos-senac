@@ -10,6 +10,7 @@ include_once('cabecalho.php');
 include_once('menu_superior.php');
 
 $info_bd = busca_info_bd($conexao, 'usuario');
+$cargos = busca_info_bd($conexao, 'cargos');
 $admin = $_SESSION['admin'];
 
 ?>
@@ -17,8 +18,9 @@ $admin = $_SESSION['admin'];
 <body>
 
     <div class="container mt-5">
+        <div>
         <h1 class="mb-4 text-center" style="color: #054F77;">Lista de Usuários</h1>
-
+        </div>
         <table class="table table-striped table-bordered table-hover" id="tabela-personalizada">
             <thead>
                 <tr>

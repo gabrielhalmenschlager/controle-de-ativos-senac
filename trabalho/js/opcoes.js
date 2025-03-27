@@ -1,43 +1,4 @@
 $(document).ready(function () {
-    $("#nivelOpcao").change(function () {
-
-        let nivelOpcao = $(this).val() - 1;
-
-        console.log(nivelOpcao);
-
-        if (nivelOpcao == 0 || nivelOpcao == -1 || nivelOpcao == '') {
-            $("#campoSuperior").hide();
-            return;
-
-        } else {
-            $("#campoSuperior").show();
-            carregarOpcoesSuperior(nivelOpcao);
-        }
-    });
-
-    function carregarOpcoesSuperior(nivel) {
-        $.ajax({
-            type: 'POST',
-            url: "../controle/opcoes_controle.php",
-            data: { acao: 'get_opcoes_superior', nivelOpcao: nivel },
-
-            success: function (result) {
-
-                let options = JSON.parse(result);
-                let select = $("#idSuperior");
-                select.empty();
-
-                select.append('<option selected value="">Selecione</option>');
-
-                options.forEach(function (opcao) {
-                    select.append('<option value="' + opcao.idOpcao + '">' + opcao.descricaoOpcao + '</option>');
-                });
-            }
-        });
-    }
-});
-
-$(document).ready(function () {
     $(".salvar").click(function () {
 
         let idOpcao = $("#idOpcao").val();
@@ -142,6 +103,7 @@ function editar(idOpcao) {
             $("#descricaoOpcao").val(retorno[0]['descricaoOpcao']);
             $("#nivelOpcao").val(retorno[0]['nivelOpcao']);
             $("#urlOpcao").val(retorno[0]['urlOpcao']);
+            exibeSuperior('opcao', retorno[0]['nivelOpcao'], retorno[0]['idSuperior'] )
 
             console.log(retorno)
         }
@@ -186,20 +148,56 @@ function remover(idOpcao) {
     });
 }
 
+function exibeSuperior(elemento, nivel = false,idSup = false) {
+    if(nivel != false) {
+        nivel = nivel;
+    }else{
+        nivel = elemento.value;
+    }
+
+    let nivelSuperior = nivel - 1;
+
+    console.log(nivel);
+
+    if (nivel == 1 || nivel == '') {
+        $('.divSuperior').attr('style', 'display:none;');
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: "../controle/opcoes_controle.php",
+            data: {
+                acao: 'busca_superior',
+                nivelOpcao: nivelSuperior
+            },
+            success: function (result) {
+                retorno = JSON.parse(result);
+                let select = '<select class="form-select" id="idSuperior" name="idSuperior"><option value="">Selecione um Nível Superior</option>';
+                $(retorno).each(function (index, element) {
+                    if(idSup == element.idOpcao){
+                    select += '<option value="' + element.idOpcao + '"selected>' + element.descricaoOpcao + '</option>';
+                } else {
+                    select += '<option value="' + element.idOpcao + '">' + element.descricaoOpcao + '</option>';
+                }
+            });
+                select += "</select>";
+                $('#select').html(select);
+            }
+        });
+        $('.divSuperior').attr('style', 'display:block;');
+    }
+}
+
 function limpar_modal() {
 
     $("#idOpcao").val('');
+    $("#idSuperior").val('');
     $("#descricaoOpcao").val('');
     $("#nivelOpcao").val('');
     $("#urlOpcao").val('');
     $("#urlOpcao").val('');
+    $('.divSuperior').attr('style', 'display:none;');
+    $('#select').html('');
 
-}
-
-function limpar_modal() {
-    $("#tipo").val('');
-    $("#idTipo").val('');
-    $(".form-control, .form-select").removeClass("borda-vermelha");
 }
 
 document.addEventListener('DOMContentLoaded', function () {

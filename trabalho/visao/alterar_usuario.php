@@ -4,7 +4,6 @@ include_once('../controle/controle_session.php');
 include_once('../modelo/conexao.php');
 include_once('../controle/funcoes.php');
 
-
 $title = "Alterar Usuário";
 
 include_once('cabecalho.php');
@@ -12,13 +11,14 @@ include_once('menu_superior.php');
 
 $usuario_altera = $_GET['id_usuario'];
 $info_bd = busca_info_bd($conexao, 'usuario', 'idUsuario', $usuario_altera);
+$cargos = busca_info_bd($conexao, 'cargos');
 
 foreach ($info_bd as $user) {
     $nome = $user['nomeUsuario'];
     $turma = $user['turmaUsuario'];
     $id_user = $user['idUsuario'];
+    $idCargo = $user['idCargo'];
 }
-
 ?>
 
 <body>
@@ -30,10 +30,10 @@ foreach ($info_bd as $user) {
 
             <h2 class="form-title">Alterar Usuário</h2>
 
-            <form action="../controle/login_usuario_controle.php" method="POST">
+            <form action="../controle/alterar_usuario_controle.php" method="POST">
 
                 <div class="form-group">
-                    <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id_user ?>" placeholder="Digite seu Id" required>
+                    <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $id_user ?>" required>
                 </div>
 
                 <div class="form-group">
@@ -46,8 +46,19 @@ foreach ($info_bd as $user) {
                     <input type="text" class="form-control" name="turma" id="turma" value="<?php echo $turma ?>" placeholder="Informe sua turma" required>
                 </div>
 
-                <!-- Botão Salvar -->
-                <button type="submit" class="btn btn-outline-primary">Salvar</button>
+                <div class="form-group">
+                    <label for="cargo" class="form-label">Cargo</label>
+                    <select class="form-select" name="idCargo" id="idCargo" required>
+                        <option value="">Selecione</option>
+                        <?php
+                        foreach ($cargos as $cargo) {
+                            echo "<option value='" . $cargo['idCargo'] . "'>" . $cargo['descricaoCargo'] . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary" style="background-color: #054F77 !important; color: white;">Salvar</button>
 
             </form>
         </div>
@@ -56,8 +67,8 @@ foreach ($info_bd as $user) {
     <footer class="footer bg-light text-center py-1 mt-5" style="background-color: gray;">
         <div class="container">
             <div class="row align-items-center">
-                <div class=" mt-3 col-6 text-left">
-                <img src="https://static.wixstatic.com/media/52bc07_3a4a9b542c644d9385b5366e7995eecf~mv2.png/v1/fill/w_500,h_292,al_c,lg_1,q_85,enc_avif,quality_auto/senac%20branco.png" alt="Logo Senac" style="width: 120px;">
+                <div class="mt-3 col-6 text-left">
+                    <img src="https://static.wixstatic.com/media/52bc07_3a4a9b542c644d9385b5366e7995eecf~mv2.png/v1/fill/w_500,h_292,al_c,lg_1,q_85,enc_avif,quality_auto/senac%20branco.png" alt="Logo Senac" style="width: 120px;">
                 </div>
                 <div class="mt-3 col-6 text-right">
                     <p style="color: white; margin-bottom: 0; font-size: 15px;">Siga-nos nas redes sociais:</p>

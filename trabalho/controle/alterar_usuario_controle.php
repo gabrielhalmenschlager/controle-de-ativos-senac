@@ -6,13 +6,15 @@ include_once('../modelo/conexao.php');
 $nome = $_POST['nome'];
 $turma = $_POST['turma'];
 $id = $_POST['id'];
+$idCargo = $_POST['idCargo'];
 
 $query = "
         UPDATE    
             usuario 
         SET 
             nomeUsuario = '".$nome."',
-            TurmaUsuario = '".$turma."'
+            TurmaUsuario = '".$turma."',
+            idCargo = '".$idCargo."'
         WHERE
             idUsuario = '".$id."'
 ";

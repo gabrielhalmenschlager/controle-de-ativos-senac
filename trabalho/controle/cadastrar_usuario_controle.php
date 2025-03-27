@@ -6,6 +6,7 @@ $nome = $_POST['nome'];
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 $turma = $_POST['turma'];
+$idCargo = $_POST['IdCargo'];
 
 if (strlen($senha) < 8) {
     echo "<script> alert('A senha deve ter no mínimo 8 caracteres.')
@@ -45,11 +46,13 @@ $query="
                                 usuario,
                                 senhaUsuario,
                                 turmaUsuario,
+                                idCargo,
                                 dataCadastro
                                 )values ('".$nome."',
                                 '".$usuario."',
                                 '".$senhaCrip."',
                                 '".$turma."',
+                                '10',
                                     NOW())";
 
 $ativos = mysqli_query($conexao,$query)or die(false);

@@ -18,7 +18,7 @@ include_once('cabecalho.php');
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nível</label><span style="color: red;"> * </span>
-                        <select class="form-select shadow-sm border-light" id="nivelOpcao" name="nivelOpcao" required>
+                        <select class="form-select shadow-sm border-light" id="nivelOpcao" name="nivelOpcao" onchange="exibeSuperior(this)">
                             <option value="">Selecione</option>
                             <?php
                             foreach ($niveis as $nivel) {
@@ -27,12 +27,15 @@ include_once('cabecalho.php');
                             ?>
                         </select>
                     </div>
-                    <div class="mb-3" id="campoSuperior" style="display: none;">
+                    <div class="mb-3 divSuperior" style="display: none;">
                         <label class="form-label">Opções Superior</label><span style="color: red;"> * </span>
-                        <select class="form-select shadow-sm border-light" id="idSuperior" name="idSuperior">
-                            <option selected value="">Selecione</option>
-                        </select>
+                        <div id="select">
+                            <select class="form-select shadow-sm border-light" id="idSuperior" name="idSuperior">
+                                <option value="">Selecione um Nível Superior</option>
+                            </select>
+                        </div>
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">URL</label>
                         <input type="text" class="form-control" id="urlOpcao" name="urlOpcao" placeholder="Digite a URL" required>

@@ -6,8 +6,88 @@ include_once('../modelo/conexao.php');
 $title = "Opções";
 include_once('cabecalho.php');
 
-$opcoes = busca_info_bd($conexao, 'opcoes_menu');
+$sql = "
+SELECT 
+    idOpcao,  
+    descricaoOpcao, 
+    urlOpcao,
+    statusOpcao,  
+    nivelOpcao,
+    dataCadastroOpcao,   
+    (SELECT nomeUsuario FROM usuario u WHERE u.idUsuario = a.idUsuario) AS usuario,
+    (SELECT descricaoNivel FROM nivel_acesso n WHERE n.idNivel = a.nivelOpcao) AS descricaoNivel,
+    (SELECT idNivel FROM nivel_acesso n WHERE n.idNivel = a.nivelOpcao) AS idNivel
+FROM 
+    opcoes_menu a
+WHERE nivelOpcao = 1"
+
+;
+
+$result = mysqli_query($conexao, $sql) or die(false);
+$opcoes = $result->fetch_all(MYSQLI_ASSOC);
 $niveis = busca_info_bd($conexao, 'nivel_acesso');
+
+
+$novoArr = [];
+
+foreach ($opcoes as $row) {
+    $novoArr[$row['idOpcao']]['DESCR_OPCAO'] = $row['descricaoOpcao'];
+    $novoArr[$row['idOpcao']]['NIVEL_OPCAO'] = $row['nivelOpcao'];
+    $novoArr[$row['idOpcao']]['URL_OPCAO'] = $row['urlOpcao'];
+    $novoArr[$row['idOpcao']]['STATUS_OPCAO'] = $row['statusOpcao'];
+    $novoArr[$row['idOpcao']]['DESCR_NIVEL'] = $row['descricaoNivel'];
+
+    $sqlSub = "
+    SELECT 
+        idOpcao,
+        descricaoOpcao,
+        nivelOpcao,
+        urlOpcao,
+        statusOpcao,
+        (SELECT descricaoNivel FROM nivel_acesso ac WHERE ac.idNivel = a.nivelOpcao) as descricaoNivel
+    FROM
+        opcoes_menu a
+    WHERE
+        idSuperior = " . $row['idOpcao'] . "
+";
+
+    $resultSub = mysqli_query($conexao, $sqlSub) or die(false);
+    $opcaoSub = $resultSub->fetch_all(MYSQLI_ASSOC);
+
+    foreach ($opcaoSub as $sub){
+    $novoArr[$sub['idOpcao']]['DESCR_OPCAO'] = $sub['descricaoOpcao'];
+    $novoArr[$sub['idOpcao']]['NIVEL_OPCAO'] = $sub['nivelOpcao'];
+    $novoArr[$sub['idOpcao']]['URL_OPCAO'] = $sub['urlOpcao'];
+    $novoArr[$sub['idOpcao']]['STATUS_OPCAO'] = $sub['statusOpcao'];
+    $novoArr[$sub['idOpcao']]['DESCR_NIVEL'] = $sub['descricaoNivel'];
+          
+        $sqlOpcao = "
+        SELECT 
+            idOpcao,
+            descricaoOpcao,
+            nivelOpcao,
+            urlOpcao,
+            statusOpcao,
+            (SELECT descricaoNivel FROM nivel_acesso ac WHERE ac.idNivel = a.nivelOpcao) as descricaoNivel
+        FROM
+            opcoes_menu a
+        WHERE
+            idSuperior = " . $sub['idOpcao'] . "
+    ";
+    
+        $resultOpcao = mysqli_query($conexao, $sqlOpcao) or die(false);
+        $opcaoOp = $resultOpcao->fetch_all(MYSQLI_ASSOC);
+    
+        foreach ($opcaoOp as $opcao){
+            $novoArr[$opcao['idOpcao']]['DESCR_OPCAO'] = $opcao['descricaoOpcao'];
+            $novoArr[$opcao['idOpcao']]['NIVEL_OPCAO'] = $opcao['nivelOpcao'];
+            $novoArr[$opcao['idOpcao']]['URL_OPCAO'] = $opcao['urlOpcao'];
+            $novoArr[$opcao['idOpcao']]['STATUS_OPCAO'] = $opcao['statusOpcao'];
+            $novoArr[$opcao['idOpcao']]['DESCR_NIVEL'] = $opcao['descricaoNivel'];
+
+        }
+    }
+}
 
 include_once('menu_superior.php');
 
@@ -33,6 +113,7 @@ include_once('menu_superior.php');
                 <tr>
                     <th style="background-color: #054F77; color: white;" scope="col">Id</th>
                     <th style="background-color: #054F77; color: white;" scope="col">Descrição</th>
+                    <th style="background-color: #054F77; color: white;" scope="col">Descrição Nível</th>
                     <th style="background-color: #054F77; color: white;" scope="col">Nível</th>
                     <th style="background-color: #054F77; color: white;" scope="col">URL</th>
                     <th style="background-color: #054F77; color: white; text-align:center;" scope="col">Ações</th>
@@ -40,27 +121,43 @@ include_once('menu_superior.php');
             </thead>
             <tbody>
                 <?php
-                foreach ($opcoes as $opcao) {
+                foreach ($novoArr as $chave => $opcao) {
+                        
+                    $nivel = $opcao['NIVEL_OPCAO'];
+                    $descr_nivel = $opcao['DESCR_NIVEL'];
+                    $id = $chave;
+                    $descr_opcao = $opcao['DESCR_OPCAO'];
+                    $url = $opcao['URL_OPCAO'];
+                    $status = $opcao['STATUS_OPCAO'];
+
+                    if ($nivel == 1) {
+                        $padding = "";
+                    } else if ($nivel == 2) {
+                        $padding = 'padding-left:50px';
+                    } else if ($nivel == 3) {
+                        $padding = 'padding-left:100px';
+                    }
                 ?>
                     <tr>
-                        <td><?php echo $opcao['idOpcao']; ?></td>
-                        <td><?php echo $opcao['descricaoOpcao']; ?></td>
-                        <td><?php echo $opcao['nivelOpcao']; ?></td>
-                        <td><?php echo $opcao['urlOpcao']; ?></td>
+                        <td><?php echo $id; ?></td>
+                        <td style="<?php echo $padding ?>"><?php echo $descr_opcao; ?></td>
+                        <td style="<?php echo $padding ?>"><?php echo $descr_nivel; ?></td>
+                        <td><?php echo $nivel; ?></td>
+                        <td><?php echo $url; ?></td>
                         <td>
                             <div class="acoes" style="display: flex; justify-content: space-around;">
                                 <div class="muda_status">
                                     <?php
-                                    if ($opcao['statusOpcao'] == "S") {
+                                    if ($status == "S") {
                                     ?>
-                                        <div class="inativo" onclick="muda_status('N','<?php echo $opcao['idOpcao']; ?>')"
+                                        <div class="inativo" onclick="muda_status('N','<?php echo $id; ?>')"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Ativo">
                                             <img src="https://png.pngtree.com/png-clipart/20221028/ourmid/pngtree-right-symbol-png-image_6400869.png" alt="Ativo" style="width: 20px; height: 20px;">
                                         </div>
                                     <?php
                                     } else {
                                     ?>
-                                        <div class="ativo" onclick="muda_status('S','<?php echo $opcao['idOpcao']; ?>')"
+                                        <div class="ativo" onclick="muda_status('S','<?php echo $id; ?>')"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Inativo">
                                             <img src="https://png.pngtree.com/png-vector/20221215/ourmid/pngtree-wrong-icon-png-image_6525689.png" alt="Inativo" style="width: 20px; height: 20px;">
                                         </div>
@@ -68,11 +165,11 @@ include_once('menu_superior.php');
                                     }
                                     ?>
                                 </div>
-                                <div class="edit" onclick="editar('<?php echo $opcao['idOpcao']; ?>')"
+                                <div class="edit" onclick="editar('<?php echo $id; ?>')"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
                                     <img src="https://cdn-icons-png.flaticon.com/512/4226/4226577.png" alt="Editar" style="width: 20px; height: 20px;">
                                 </div>
-                                <div class="remover" onclick="remover('<?php echo $opcao['idOpcao']; ?>')"
+                                <div class="remover" onclick="remover('<?php echo $id; ?>')"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Remover">
                                     <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt="Remover" style="width: 20px; height: 20px;">
                                 </div>

@@ -34,8 +34,8 @@ if ($acao == 'insert'){
 } else if ($acao == 'deletar_opcao') {
     $retorno = $classeOpcoes->deletar_opcao($conexao, $idOpcao);
 
-} else if ($acao == 'get_opcoes_superior') {
-    $retorno = $classeOpcoes->get_opcoes_superior($conexao, $nivelOpcao);
+} else if ($acao == 'busca_superior') {
+    $retorno = $classeOpcoes->busca_superior($conexao, $nivelOpcao);
 }
 
 echo $retorno;
