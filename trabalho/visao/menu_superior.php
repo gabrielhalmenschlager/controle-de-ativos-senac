@@ -57,6 +57,7 @@
                     <ul class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownAtivos">
                         <li><a class="dropdown-item" href="opcoes.php">Opções</a></li>
                         <li><a class="dropdown-item" href="cargos.php">Cargos</a></li>
+                        <li><a class="dropdown-item" href="acessos.php">Acessos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

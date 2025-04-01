@@ -23,6 +23,7 @@ $(document).ready(function () {
 
         let array_dados = {};
 
+        array_dados['acao'] = 'gravar_acesso';
         array_dados['cargo'] = cargo;
         array_dados['acessos'] = array_acesso;
 
@@ -40,3 +41,36 @@ $(document).ready(function () {
         });
     });
 });
+
+function busca_acesso() {
+
+    let cargo = $('#cargo').val();
+
+    $('.check').each(function (index, acesso) {
+        $(this).prop('checked', false);
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: "../controle/acessos_controller.php",
+        data: {
+            acao: 'busca_acesso',
+            cargo: cargo
+        },
+
+        success: function (result) {
+            
+            let retorno = JSON.parse(result);
+
+            $(retorno).each(function (index, acesso) {
+
+                if (acesso.statusAcesso == 'S') {
+                    $('.' + acesso.idOpcao).prop('checked', true)
+                } else {
+                    $('.' + acesso.idOpcao).prop('checked', false)
+                }
+            });
+            
+        }
+    });
+}

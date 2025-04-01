@@ -98,11 +98,11 @@ include_once('menu_superior.php');
 <script src="../js/acessos.js"></script>
 
 <body>
-    <div class="container mt-3">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <label for="cargo" class="form-label">Cargo</label>
-                <select class="form-select" name="cargo" id="cargo" required>
+                <h1 class="mb-4" style="color: #054F77;">Acessos Usuários</h1>
+                <select class="form-select" onchange="busca_acesso()" name="cargo" id="cargo" required>
                     <option value="">Selecione</option>
                     <?php
                     foreach ($cargos as $cargo) {
@@ -112,6 +112,15 @@ include_once('menu_superior.php');
                 </select>
             </div>
         </div>
+
+        <div class="container mt-5">
+            <div class="d-flex justify-content-center">
+                <button type="button" id="salvarAcesso" class="btn btn-primary custom-btn salvarAcesso">
+                    Salvar Acessos
+                </button>
+            </div>
+        </div>
+
         <div class="row mt-5">
             <?php
             foreach ($novoArr as $idOpcao => $opcao) {
@@ -132,7 +141,7 @@ include_once('menu_superior.php');
                     <div class="linha_opcao" style="<?php echo $padding; ?>">
                         <div class="input-group mb-3">
                             <div class="input-group-text">
-                                <input class="form-check-input mt-0 check" type="checkbox" value="<?php echo $idOpcao;?>" aria-label="Checkbox for following text input">
+                                <input class="form-check-input mt-0 check <?php echo $idOpcao; ?>" type="checkbox" value="<?php echo $idOpcao; ?>" aria-label="Checkbox for following text input">
                             </div>
                             <?php
                             echo $opcao['DESCR_OPCAO'];
@@ -143,13 +152,71 @@ include_once('menu_superior.php');
             <?php
             }
             ?>
-            <div class="container mt-5">
-                <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary salvarAcesso">
-                        Salvar Acesso
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
+
+    <footer class="footer bg-light text-center py-1 mt-5" style="background-color: gray;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class=" mt-3 col-6 text-left">
+                    <img src="https://static.wixstatic.com/media/52bc07_3a4a9b542c644d9385b5366e7995eecf~mv2.png/v1/fill/w_500,h_292,al_c,lg_1,q_85,enc_avif,quality_auto/senac%20branco.png" alt="Logo Senac" style="width: 120px;">
+                </div>
+                <div class="mt-3 col-6 text-right">
+                    <p style="color: white; margin-bottom: 0; font-size: 15px;">Siga-nos nas redes sociais:</p>
+                    <a href="https://www.instagram.com/senacsantacruz" target="_blank" class="mr-2">
+                        <img src="https://png.pngtree.com/png-clipart/20180626/ourmid/pngtree-instagram-icon-instagram-logo-png-image_3584852.png" alt="Instagram" style="width: 35px; height: 35px; transition: transform 0.3s;">
+                    </a>
+                    <a href="https://www.facebook.com/senacsantacruz" target="_blank" class="mr-2">
+                        <img src="https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png" alt="Facebook" style="width: 40px; height: 40px; transition: transform 0.3s;">
+                    </a>
+                </div>
+            </div>
+            <div class="mt-2">
+                <span style="color: white; font-size: 15px;">2025 Senac | Todos os direitos reservados</span>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Input group for Checkboxes */
+        .input-group {
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .input-group:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-group-text {
+            border: none;
+            background-color: transparent;
+        }
+
+        .form-check-input {
+            margin-top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-check-input:checked {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn {
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+    </style>
+
 </body>
