@@ -23,8 +23,6 @@ if ($acao == 'gravar_acesso') {
         WHERE 
             idCargo = '$cargo' ";
 
-    echo $sql;
-
     $result = mysqli_query($conexao, $sql) or die(false);
     $acessos = $result->fetch_all(MYSQLI_ASSOC);
 
@@ -58,8 +56,8 @@ if ($acao == 'gravar_acesso') {
                                         idUsuario,
                                         dataCadastro
                                         ) values (
-                                        '" . $idOpcao . "',
                                         '" . $cargo . "',
+                                        '" . $idOpcao . "',
                                         '" . $acesso_new . "',
                                         '" . $user . "',
                                         NOW()
@@ -90,8 +88,6 @@ if ($acao == 'busca_acesso') {
             acesso
         WHERE 
             idCargo = '$cargo' ";
-
-    echo $sql;
 
     $result = mysqli_query($conexao, $sql) or die(false);
     $acessos = $result->fetch_all(MYSQLI_ASSOC);

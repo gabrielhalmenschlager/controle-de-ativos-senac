@@ -114,7 +114,7 @@ include_once('menu_superior.php');
         </div>
 
         <div class="container mt-5">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex">
                 <button type="button" id="salvarAcesso" class="btn btn-primary custom-btn salvarAcesso">
                     Salvar Acessos
                 </button>
@@ -184,7 +184,6 @@ include_once('menu_superior.php');
             margin-bottom: 15px;
             background-color: #ffffff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 10px;
             display: flex;
             align-items: center;
             transition: box-shadow 0.3s ease;

@@ -85,6 +85,7 @@ include_once('menu_superior.php');
                         <div class="card-footer">
                             <a href="opcoes.php" class="btn btn-primary">Cadastrar Opções</a>
                             <a href="cargos.php" class="btn btn-primary">Cadastrar Cargos</a>
+                            <a href="acessos.php" class="btn btn-primary">Acessos</a>
                         </div>
                     </div>
                 </div>

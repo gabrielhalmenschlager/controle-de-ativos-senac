@@ -1,3 +1,31 @@
+<?php
+
+include_once('cabecalho.php');
+include_once('../modelo/conexao.php');
+
+$cargo = $_SESSION['idCargo'];
+
+$sqlMenu = "SELECT 
+                idOpcao,
+                descricaoOpcao,
+                urlOpcao
+            FROM
+                opcoes_menu O
+            WHERE
+                nivelOpcao = 1
+                AND statusOpcao = 'S'
+                AND idOpcao IN (
+                    SELECT idOpcao FROM acesso A WHERE A.idOpcao = O.idOpcao AND statusAcesso = 'S' AND idCargo = $cargo
+                )
+            ";
+        
+$result = mysqli_query($conexao, $sqlMenu) or die(false);
+$acessos_menu = $result->fetch_all(MYSQLI_ASSOC);
+
+?>
+
+<!--
+
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -70,6 +98,67 @@
             </ul>
         </div>
     </div>
+</nav> 
+
+-->
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Logo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <?php
+        foreach ($acessos_menu as $acesso) {
+
+            $sqlSubMenu = "SELECT 
+                idOpcao,
+                descricaoOpcao,
+                urlOpcao
+            FROM
+                opcoes_menu O
+            WHERE
+                idSuperior = '" . $acesso['idOpcao'] . "' 
+                AND statusOpcao = 'S'
+                AND idOpcao IN (
+                    SELECT idOpcao FROM acesso A WHERE A.idOpcao = O.idOpcao AND statusAcesso = 'S' AND idCargo = $cargo
+                )
+            ";
+
+            $resultSubMenu = mysqli_query($conexao, $sqlSubMenu) or die(false);
+            $acessos_subMenu = $resultSubMenu->fetch_all(MYSQLI_ASSOC);
+
+            if (count($acessos_subMenu) > 0) {
+        ?>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?php echo $acesso['descricaoOpcao']; ?>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <?php
+                    foreach ($acessos_subMenu as $subMenu) {
+                        echo '
+                            <li>
+                                <a class="dropdown-item" href="' . $subMenu['urlOpcao'] . '">' . $subMenu['descricaoOpcao'] . '</a>
+                            </li>';
+                    }
+                    ?>
+                  </ul>
+                </li>
+        <?php
+            } else {
+                echo '
+                    <li class="nav-item">
+                        <a class="nav-link" href="' . $acesso['urlOpcao'] .'">' . $acesso['descricaoOpcao'] .'</a>
+                    </li>';
+            }
+        }
+        ?>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 <style>

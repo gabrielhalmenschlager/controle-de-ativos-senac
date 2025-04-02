@@ -13,6 +13,7 @@ $senhaCrip = base64_encode($senha);
 $sql = "Select 
             count(*) as quantidade, 
             idUsuario,
+            idCargo,
             admin
         from 
             usuario
@@ -27,6 +28,7 @@ if ($dados['quantidade'] > 0) {
     $_SESSION['login_ok'] = true;
     $_SESSION['controle_login'] = true;
     $_SESSION['id_user'] = $dados['idUsuario'];
+    $_SESSION['idCargo'] = $dados['idCargo'];
     if ($dados['admin'] == 'S') {
         $_SESSION['admin'] = "S";
     } else {
