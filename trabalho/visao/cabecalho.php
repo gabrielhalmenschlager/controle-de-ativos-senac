@@ -76,9 +76,15 @@
             });
 
             $('#carouselExampleIndicators').carousel({
-                interval: 2000 // Intervalo entre as transições de slides (em milissegundos)
+                interval: 2000
             });
         });
     </script>
 
 </head>
+
+<?php
+
+include_once('telaBonita.php')
+
+?>

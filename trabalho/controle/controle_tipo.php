@@ -32,7 +32,7 @@ if ($acao == 'inserir') {
     $result = mysqli_query($conexao, $query);
 
     if ($result) {
-        echo 'Tipo cadastrada com sucesso!';
+        echo 'Tipo cadastrado com sucesso!';
     } else {
         echo 'Erro ao cadastrar tipo!';
     }

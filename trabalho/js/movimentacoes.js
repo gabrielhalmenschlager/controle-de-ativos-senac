@@ -2,6 +2,7 @@ $(document).ready(function () {
     $("#salvar").click(function () {
 
         let idAtivo = $("#idAtivo").val();
+        let idMovimentacao = $("#idMovimentacao").val();
         let tipoMovimentacao = $("#tipoMovimentacao").val();
         let quantidadeMov = $("#quantidadeMov").val();
         let localOrigem = $("#localOrigem").val();
@@ -37,6 +38,7 @@ $(document).ready(function () {
                 localOrigem: localOrigem,
                 localDestino: localDestino,
                 descricaoMovimentacao: descricaoMovimentacao,
+                acao: 'cadastrarMov'
             },
 
             success: function (result) {
@@ -67,6 +69,37 @@ $(document).ready(function () {
         });
     });
 });
+
+function infos(idMovimentacao) {
+    $('#idMovimentacao').val(idMovimentacao);
+    $.ajax({
+        type: 'POST',
+        url: "../controle/controle_movimentacao.php",
+        data: {
+            acao: 'get_info',
+            idMovimentacao: idMovimentacao
+        },
+
+        success: function (result) {
+            retorno = JSON.parse(result);
+            $('#modalInfosMovimentacoes').modal('show');
+            $("#descricaoAtivoInfos").val(retorno[0]['descricaoAtivo']);
+            $("#tipoMovimentacaoInfos").val(retorno[0]['tipoMovimentacao']);
+            $("#quantidadeUsoInfos").val(retorno[0]['quantidadeUso']);
+            $("#quantidadeUltimaMovInfos").val(retorno[0]['quantidadeMov']);
+            $("#quantidadeTotalInfos").val(retorno[0]['quantidadeAtivo']);
+            $("#localOrigemInfos").val(retorno[0]['localOrigem']);
+            $("#localDestinoInfos").val(retorno[0]['localDestino']);
+            $("#descricaoMovimentacaoInfos").val(retorno[0]['descricaoMovimentacao']);
+            $("#dataMovimentacaoInfos").val(retorno[0]['dataMovimentacao']);
+
+            
+
+            console.log(result);
+        }
+    });
+};
+
 
 function limpar_modal() {
     $("#idAtivo").val('');

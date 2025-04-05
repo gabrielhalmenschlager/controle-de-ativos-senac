@@ -95,11 +95,17 @@ body {
     .badge {
         font-size: 14px;
     }
+    .ocultaMobile {
+        display: block;
+    }
 }
 
-@media (max-width: 768px) {
-
 @media (max-width: 767px) {
+    
+    .ocultaMobile {
+        display: none;
+    }
+
     .table td, .table th {
         font-size: 14px;
     }
@@ -125,9 +131,11 @@ body {
     .modal-content {
         padding: 15px;
     }
+
 }
 
 @media (max-width: 480px) {
+    
     .form-title {
         font-size: 18px;
     }
@@ -155,8 +163,8 @@ body {
 .muda_status, .edit {
     cursor: pointer;
 }
-}
 
 .muda_status,.edit {
     cursor: pointer;
 }
+

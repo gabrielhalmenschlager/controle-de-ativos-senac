@@ -36,6 +36,7 @@ $(document).ready(function () {
             dataType: 'json',
             data: JSON.stringify(array_dados),
             success: function(result){
+                location.reload();
                 alert(result)
             }
         });

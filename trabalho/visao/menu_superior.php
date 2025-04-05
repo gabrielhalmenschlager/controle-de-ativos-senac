@@ -2,6 +2,7 @@
 
 include_once('cabecalho.php');
 include_once('../modelo/conexao.php');
+include_once('../controle/controle_session.php');
 
 $cargo = $_SESSION['idCargo'];
 
@@ -24,95 +25,18 @@ $acessos_menu = $result->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
-<!--
-
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="https://cdljundiai.com.br/wp-content/uploads/2020/06/senac.png" alt="Logo" style="height: 90px; transition: transform 0.3s ease;">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="inicio.php">Início
-                        <i class="bi bi-house"></i>
-                    </a>
-                </li>
-                <li class="nav-item dropdown usuario-menu">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Usuário
-                        <i class="bi bi-people"></i>
-                    </a>
-                    <ul class="dropdown-menu sub-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="cadastrar_usuario.php">Cadastrar Usuários</a></li>
-                        <li><a class="dropdown-item" href="listar_usuario.php">Lista de Usuários</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown ativos-menu">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAtivos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Cadastro
-                        <i class="bi bi-file-earmark-plus"></i>
-                    </a>
-                    <ul class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownAtivos">
-                        <li><a class="dropdown-item" href="ativos.php">Ativos</a></li>
-                        <li><a class="dropdown-item" href="marcas.php">Marcas</a></li>
-                        <li><a class="dropdown-item" href="tipos.php">Tipos</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="movimentacoes.php">Movimentações
-                        <i class="bi bi-arrows-move"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="relatorio.php">Relatórios
-                        <i class="bi bi-file-earmark-text"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="produtos_ml.php">Produtos
-                        <i class="bi bi-cart-plus"></i>
-                    </a>
-                </li>
-                <li class="nav-item dropdown ativos-menu">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAtivos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Admin
-                        <i class="bi bi-gear"></i>
-                    </a>
-                    <ul class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownAtivos">
-                        <li><a class="dropdown-item" href="opcoes.php">Opções</a></li>
-                        <li><a class="dropdown-item" href="cargos.php">Cargos</a></li>
-                        <li><a class="dropdown-item" href="acessos.php">Acessos</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="sair" href="sair.php">
-                        Sair
-                        <img src="https://cdn-icons-png.freepik.com/256/16697/16697253.png?semt=ais_hybrid" alt="Ícone de Sair" style="width: 18px; height: 18px; margin-left: 8px;">
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-</nav> 
-
--->
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Logo</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="https://cdljundiai.com.br/wp-content/uploads/2020/06/senac.png" alt="Logo" style="height: 90px; transition: transform 0.3s ease;">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ms-auto">
         <?php
         foreach ($acessos_menu as $acesso) {
-
             $sqlSubMenu = "SELECT 
                 idOpcao,
                 descricaoOpcao,
@@ -156,13 +80,18 @@ $acessos_menu = $result->fetch_all(MYSQLI_ASSOC);
             }
         }
         ?>
+        <li class="nav-item">
+            <a class="nav-link" href="sair.php" style="color: red !important;">
+                Sair
+                <img src="https://cdn-icons-png.freepik.com/256/16697/16697253.png?semt=ais_hybrid" alt="Ícone de Sair" style="width: 18px; height: 18px; margin-left: 8px;">
+            </a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
 <style>
-
     #sair {
         color: red !important;
     }

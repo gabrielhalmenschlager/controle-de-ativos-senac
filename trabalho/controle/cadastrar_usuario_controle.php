@@ -52,7 +52,7 @@ $query="
                                 '".$usuario."',
                                 '".$senhaCrip."',
                                 '".$turma."',
-                                '10',
+                                '5',
                                     NOW())";
 
 $ativos = mysqli_query($conexao,$query)or die(false);

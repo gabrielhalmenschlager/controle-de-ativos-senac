@@ -1,7 +1,9 @@
 <?php
+
 $title = "Página Inicial Senac RS";
 include_once('cabecalho.php');
 include_once('menu_superior.php');
+
 ?>
 
 <body>

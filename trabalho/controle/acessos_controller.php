@@ -26,11 +26,9 @@ if ($acao == 'gravar_acesso') {
     $result = mysqli_query($conexao, $sql) or die(false);
     $acessos = $result->fetch_all(MYSQLI_ASSOC);
 
-    var_dump($data['acessos']);
-
     foreach ($data['acessos'] as $infoAcesso) {
         $array_acessos_selecionados[$infoAcesso['idOpcao']] = $infoAcesso['acesso'];
-    }
+    }   
 
     $sql = "";
 
@@ -38,32 +36,29 @@ if ($acao == 'gravar_acesso') {
 
         foreach ($acessos as $acesso_bd) {
             if (array_key_exists($acesso_bd['idOpcao'], $array_acessos_selecionados)) {
-                $sql .= "update acesso set statusAcesso = '" . $array_acessos_selecionados[$acesso_bd['idOpcao']] . " where idAcesso = '" . $acesso_bd['idAcesso'] . "'; '; 
-            ";
+                $sql .= "update acesso set statusAcesso = '" . $array_acessos_selecionados[$acesso_bd['idOpcao']] . "' where idAcesso = '" . $acesso_bd['idAcesso'] . "'; "; 
             } else {
                 $sql .= "update acesso set statusAcesso = 'N' where idAcesso = '" . $acesso_bd['idAcesso'] . "'; ";
             }
             unset($array_acessos_selecionados[$acesso_bd['idOpcao']]);
         }
-    } else {
+    }
 
-        foreach ($array_acessos_selecionados as $idOpcao => $acesso_new) {
+    foreach ($array_acessos_selecionados as $idOpcao => $acesso_new) {
 
-            $sql .= "insert into acesso (
-                                        idCargo,
-                                        idOpcao,
-                                        statusAcesso,
-                                        idUsuario,
-                                        dataCadastro
-                                        ) values (
-                                        '" . $cargo . "',
-                                        '" . $idOpcao . "',
-                                        '" . $acesso_new . "',
-                                        '" . $user . "',
-                                        NOW()
-                                        );
-        ";
-        }
+        $sql .= "insert into acesso (
+                                    idCargo,
+                                    idOpcao,
+                                    statusAcesso,
+                                    idUsuario,
+                                    dataCadastro
+                                    ) values (
+                                    '" . $cargo . "',
+                                    '" . $idOpcao . "',
+                                    '" . $acesso_new . "',
+                                    '" . $user . "',
+                                    NOW()
+                                    ); ";
     }
 
     $sql = substr($sql, 0, -2);

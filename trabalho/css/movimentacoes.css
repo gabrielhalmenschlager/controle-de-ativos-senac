@@ -15,3 +15,19 @@
     color: white !important;
     background-color: white;
 }
+
+@media (max-width: 1024px) {
+
+    .ocultaMobile {
+        display: block;
+    }
+    
+}
+
+@media (max-width: 767px) {
+    
+    .ocultaMobile {
+        display: none;
+    }
+
+}

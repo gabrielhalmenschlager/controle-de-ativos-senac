@@ -98,10 +98,10 @@ include_once('menu_superior.php');
 <script src="../js/acessos.js"></script>
 
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5" id="container">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="mb-4" style="color: #054F77;">Acessos Usuários</h1>
+                <h1 class="mb-4 tex" style="color: #054F77;">Acessos Usuários</h1>
                 <select class="form-select" onchange="busca_acesso()" name="cargo" id="cargo" required>
                     <option value="">Selecione</option>
                     <?php
@@ -113,13 +113,7 @@ include_once('menu_superior.php');
             </div>
         </div>
 
-        <div class="container mt-5">
-            <div class="d-flex">
-                <button type="button" id="salvarAcesso" class="btn btn-primary custom-btn salvarAcesso">
-                    Salvar Acessos
-                </button>
-            </div>
-        </div>
+
 
         <div class="row mt-5">
             <?php
@@ -152,11 +146,18 @@ include_once('menu_superior.php');
             <?php
             }
             ?>
+                    <div class="container mt-5">
+            <div class="d-flex justify-content-center">
+                <button type="button" id="salvarAcesso" class="btn btn-primary custom-btn salvarAcesso">
+                    Salvar Acessos
+                </button>
+            </div>
+        </div>
         </div>
     </div>
 
     <footer class="footer bg-light text-center py-1 mt-5" style="background-color: gray;">
-        <div class="container">
+        <div class="container ">
             <div class="row align-items-center">
                 <div class=" mt-3 col-6 text-left">
                     <img src="https://static.wixstatic.com/media/52bc07_3a4a9b542c644d9385b5366e7995eecf~mv2.png/v1/fill/w_500,h_292,al_c,lg_1,q_85,enc_avif,quality_auto/senac%20branco.png" alt="Logo Senac" style="width: 120px;">
@@ -178,44 +179,78 @@ include_once('menu_superior.php');
     </footer>
 
     <style>
-        /* Input group for Checkboxes */
-        .input-group {
-            border-radius: 8px;
-            margin-bottom: 15px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            transition: box-shadow 0.3s ease;
-        }
 
-        .input-group:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+.btn {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+    /* Estilo para o container principal */
+    #container {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;  /* Reduziu o padding */
+        margin-top: 20px; /* Reduziu a margem superior */
+        max-width: 900px; /* Definindo um limite de largura */
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-        .input-group-text {
-            border: none;
-            background-color: transparent;
-        }
+    /* Estilo para os inputs e containers */
+    .input-group {
+        border-radius: 8px;
+        margin-bottom: 20px;
+        background-color: #d3d3d3;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        transition: box-shadow 0.3s ease;
+    }
 
-        .form-check-input {
-            margin-top: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
+    .input-group:hover {
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
 
-        .form-check-input:checked {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
+    .input-group-text {
+        border: none;
+        background-color: transparent;
+    }
 
-        .btn {
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-weight: 600;
-        }
-    </style>
+    .form-check-input {
+        margin-top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+    }
+
+    .form-check-input:checked {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    /* Melhorando os estilos dos cabeçalhos */
+
+    /* Estilo de seletores de cargo */
+    .form-select {
+        background-color: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding: 12px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Estilo para a linha de opções */
+    .linha_opcao {
+        margin-bottom: 15px;
+    }
+</style>
 
 </body>

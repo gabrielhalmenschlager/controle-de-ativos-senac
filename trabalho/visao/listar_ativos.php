@@ -42,11 +42,11 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <thead>
                 <tr>
                     <th style="background-color: #054F77; color: white;" scope="col">Descrição</th>
-                    <th style="background-color: #054F77; color: white;" scope="col">Marca</th>
-                    <th style="background-color: #054F77; color: white;" scope="col">Tipo</th>
-                    <th style="background-color: #054F77; color: white;" scope="col">Quantidade</th>
-                    <th style="background-color: #054F77; color: white;" scope="col">Quantidade Disp</th>
-                    <th style="background-color: #054F77; color: white;" scope="col">Imagem</th>
+                    <th class="ocultaMobile" style="background-color: #054F77; color: white;" scope="col">Marca</th>
+                    <th class="ocultaMobile" style="background-color: #054F77; color: white;" scope="col">Tipo</th>
+                    <th class="ocultaMobile" style="background-color: #054F77; color: white;" scope="col">Quantidade</th>
+                    <th class="ocultaMobile" style="background-color: #054F77; color: white;" scope="col">Quantidade Disp</th>
+                    <th class="ocultaMobile" style="background-color: #054F77; color: white;" scope="col">Imagem</th>
                     <th style="background-color: #054F77; color: white; text-align:center;" scope="col">Ações</th>
                 </tr>
             </thead>
@@ -57,20 +57,20 @@ $ativos_bd = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 ?>
                     <tr>
                         <td><?php echo $ativos['descricaoAtivo']; ?></td>
-                        <td><?php echo $ativos['marca']; ?></td>
-                        <td><?php echo $ativos['tipo']; ?></td>
-                        <td>
+                        <td class="ocultaMobile"><?php echo  $ativos['marca']; ?></td>
+                        <td class="ocultaMobile"><?php echo $ativos['tipo']; ?></td>
+                        <td class="ocultaMobile">
                             <?php echo $ativos['quantidadeAtivo']; ?>
                         </td>
 
-                        <td>
+                        <td class="ocultaMobile">
                             <?php echo $quantidadeDisp; ?>
                             <?php if ($quantidadeDisp < $ativos['quantidadeMinAtivo']) { ?>
                                 <img src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="Alerta" style="width: 20px; height: 20px; margin-left: 10px;"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Quantidade abaixo do mínimo!">
                             <?php } ?>
                         </td>
-                        <td>
+                        <td class="ocultaMobile">
                             <img onclick="abrirImagem('<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/' . $ativos['urlImagem']; ?>')" src="<?php echo $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . '/' . $ativos['urlImagem']; ?>" style="width: 70px; height: 70px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Imagem">
                         </td>
                         <td>

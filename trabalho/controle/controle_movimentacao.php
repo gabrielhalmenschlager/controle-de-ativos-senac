@@ -9,6 +9,7 @@ ini_set('display_errors', 0);
 error_reporting(E_ERROR);
 
 $ativo = $_POST['idAtivo'];
+$idMovimentacao = $_POST['idMovimentacao'];
 $tipoMovimentacao = $_POST['tipoMovimentacao'];
 $quantidadeMov = $_POST['quantidadeMov'];
 $localOrigem = $_POST['localOrigem'];
@@ -16,7 +17,11 @@ $localDestino = $_POST['localDestino'];
 $descricaoMovimentacao = $_POST['descricaoMovimentacao'];
 $statusMov = $_POST['statusMov'];
 
+$acao = $_POST['acao'];
+
 $user = $_SESSION['id_user'];
+
+if ($acao == 'cadastrarMov') {
 
 $sqlTotal = "
     SELECT quantidadeAtivo
@@ -109,4 +114,28 @@ if ($resultInsert) {
     echo "Erro ao registrar movimentação: " . mysqli_error($conexao);
 }
 
-?>
+}
+
+if ($acao == 'get_info') {
+    $sql = "SELECT
+    idMovimentacao,
+    descricaoMovimentacao,
+    quantidadeMov,
+    quantidadeUso,
+    statusMov,
+    tipoMovimentacao,
+    localOrigem,
+    localDestino,
+    `dataMovimentacao`,
+    (SELECT descricaoAtivo FROM ativo a WHERE a.idAtivo = m.idAtivo) as ativo,
+    (SELECT nomeUsuario FROM usuario u WHERE u.idUsuario = m.idUsuario) as usuario,
+    (SELECT quantidadeAtivo FROM ativo a WHERE a.idAtivo = m.idAtivo) as quantidadeAtivo
+FROM movimentacao m
+WHERE idMovimentacao = $idMovimentacao ";
+
+    $result = mysqli_query($conexao, $sql);
+    $movimentacoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    echo json_encode($movimentacoes);
+}
+

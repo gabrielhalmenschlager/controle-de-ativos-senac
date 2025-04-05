@@ -1,5 +1,7 @@
 <?php
+
 $title = "Tela de Login";
+
 include_once('cabecalho.php');
 
 session_start();
