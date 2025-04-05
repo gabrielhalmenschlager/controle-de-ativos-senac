@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ERROR);
 
 include_once('../modelo/conexao.php');
-include_once('controle_session.php');
+include_once('../controle/controle_session.php');
 $title = "Relatório Gerado";
 include_once('cabecalho.php');
 include_once('menu_superior.php');
